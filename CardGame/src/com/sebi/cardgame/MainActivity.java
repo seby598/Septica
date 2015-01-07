@@ -480,6 +480,12 @@ public class MainActivity extends Activity {
 						ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 						opponentCard.setVisibility(View.INVISIBLE);
 					}
+					else if (readMessage.substring(0, 9).equals("hideCards")) {
+						ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
+						myCard.setVisibility(View.INVISIBLE);
+						ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
+						opponentCard.setVisibility(View.INVISIBLE);
+					}
 				} else
 
 				if (gameStarted == false) {
@@ -606,6 +612,11 @@ public class MainActivity extends Activity {
 				myCard.setVisibility(View.INVISIBLE);
 				ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 				opponentCard.setVisibility(View.INVISIBLE);
+				
+				String message = "hideCards";
+				mChatService.write(message.getBytes());
+				
+				
 			} else if (x == 7) {
 				if (firstHand == true) {
 					// cazul in care nu-i prima mana
@@ -622,6 +633,9 @@ public class MainActivity extends Activity {
 					myCard.setVisibility(View.INVISIBLE);
 					ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 					opponentCard.setVisibility(View.INVISIBLE);
+					
+					String message = "hideCards";
+					mChatService.write(message.getBytes());
 				} else {
 					if(y == firstCardOfHand)
 					{
@@ -653,6 +667,9 @@ public class MainActivity extends Activity {
 						myCard.setVisibility(View.INVISIBLE);
 						ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 						opponentCard.setVisibility(View.INVISIBLE);
+						
+						String message = "hideCards";
+						mChatService.write(message.getBytes());
 					}
 				}
 			} else {// y == 7
