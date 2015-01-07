@@ -613,7 +613,7 @@ public class MainActivity extends Activity {
 				ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 				opponentCard.setVisibility(View.INVISIBLE);
 				
-				String message = "hideCards";
+				String message = "hideCards@";
 				mChatService.write(message.getBytes());
 				
 				
@@ -634,7 +634,7 @@ public class MainActivity extends Activity {
 					ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 					opponentCard.setVisibility(View.INVISIBLE);
 					
-					String message = "hideCards";
+					String message = "hideCards@";
 					mChatService.write(message.getBytes());
 				} else {
 					if(y == firstCardOfHand)
@@ -668,7 +668,7 @@ public class MainActivity extends Activity {
 						ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 						opponentCard.setVisibility(View.INVISIBLE);
 						
-						String message = "hideCards";
+						String message = "hideCards@";
 						mChatService.write(message.getBytes());
 					}
 				}
