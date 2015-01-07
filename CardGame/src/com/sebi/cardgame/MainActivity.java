@@ -608,6 +608,16 @@ public class MainActivity extends Activity {
 				firstHand = true;
 				currentHandCards.clear();
 				
+				ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
+				ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
+				ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
+				ImageButton card4ImgBtn = (ImageButton) findViewById(R.id.card4);
+
+				card1ImgBtn.setEnabled(true);
+				card2ImgBtn.setEnabled(true);
+				card3ImgBtn.setEnabled(true);
+				card4ImgBtn.setEnabled(true);
+				
 				ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 				myCard.setVisibility(View.INVISIBLE);
 				ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
@@ -628,6 +638,16 @@ public class MainActivity extends Activity {
 						Log.i(TAG, "Eu am cartiile: " + takenCards.get(i));
 					currentHandCards.clear();
 					firstHand = true;
+					
+					ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
+					ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
+					ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
+					ImageButton card4ImgBtn = (ImageButton) findViewById(R.id.card4);
+
+					card1ImgBtn.setEnabled(true);
+					card2ImgBtn.setEnabled(true);
+					card3ImgBtn.setEnabled(true);
+					card4ImgBtn.setEnabled(true);
 					
 					ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 					myCard.setVisibility(View.INVISIBLE);
@@ -662,6 +682,16 @@ public class MainActivity extends Activity {
 							Log.i(TAG, "Eu am cartiile: " + takenCards.get(i));
 						currentHandCards.clear();
 						firstHand = true;
+						
+						ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
+						ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
+						ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
+						ImageButton card4ImgBtn = (ImageButton) findViewById(R.id.card4);
+
+						card1ImgBtn.setEnabled(true);
+						card2ImgBtn.setEnabled(true);
+						card3ImgBtn.setEnabled(true);
+						card4ImgBtn.setEnabled(true);
 						
 						ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 						myCard.setVisibility(View.INVISIBLE);
