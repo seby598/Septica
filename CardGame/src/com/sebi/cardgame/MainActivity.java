@@ -871,7 +871,7 @@ public class MainActivity extends Activity {
 				firstCardOfHand = card3;
 			firstCard = card3;
 			ImageButton imgBtn7 = (ImageButton) findViewById(R.id.myCardImgBtn);
-
+			imgBtn7.setVisibility(View.VISIBLE);
 			imgBtn7.setImageResource(MainActivity
 					.getCardDrawable(cardsArrayList.get(card3)));
 
@@ -920,7 +920,7 @@ public class MainActivity extends Activity {
 				firstCardOfHand = card4;
 			firstCard = card4;
 			ImageButton imgBtn7 = (ImageButton) findViewById(R.id.myCardImgBtn);
-
+			imgBtn7.setVisibility(View.VISIBLE);
 			imgBtn7.setImageResource(MainActivity
 					.getCardDrawable(cardsArrayList.get(card4)));
 
