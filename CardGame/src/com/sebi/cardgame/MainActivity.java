@@ -418,7 +418,7 @@ public class MainActivity extends Activity {
 
 					gameStarted = true;
 
-					break;
+					
 				} /*else {
 
 					ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
@@ -441,7 +441,7 @@ public class MainActivity extends Activity {
 					 
 					break;
 				}*/
-
+				break;
 			case MESSAGE_READ:
 
 				byte[] readBuf = (byte[]) msg.obj;
