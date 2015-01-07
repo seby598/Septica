@@ -419,7 +419,7 @@ public class MainActivity extends Activity {
 					gameStarted = true;
 
 					break;
-				} else {
+				} /*else {
 
 					ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
 					ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
@@ -432,15 +432,15 @@ public class MainActivity extends Activity {
 					card4ImgBtn.setEnabled(false);
 
 					Log.i(TAG, "Message_write else");
-					/*
+					
 					 * String message = "";
 					 * 
 					 * message
 					 * 
 					 * mChatService.write(message.getBytes());
-					 */
+					 
 					break;
-				}
+				}*/
 
 			case MESSAGE_READ:
 
