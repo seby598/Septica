@@ -476,9 +476,9 @@ public class MainActivity extends Activity {
 						imageBtn4.setEnabled(true);
 						
 						ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
-						myCard.setBackgroundColor(0xFFFFFF);
+						myCard.setVisibility(View.INVISIBLE);
 						ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
-						opponentCard.setBackgroundColor(0xFFFFFF);
+						opponentCard.setVisibility(View.INVISIBLE);
 					}
 				} else
 
@@ -528,7 +528,7 @@ public class MainActivity extends Activity {
 					Log.i(TAG, "MESSAGE_READ else");
 
 					ImageButton imageBtn7 = (ImageButton) findViewById(R.id.myCardImgBtn);
-					
+					imageBtn7.setVisibility(View.VISIBLE);
 					Log.i(TAG, "Cartea primita 1: " + readMessage);
 
 					firstCard = Integer.valueOf(readMessage);
@@ -554,7 +554,7 @@ public class MainActivity extends Activity {
 
 					Log.i(TAG, "MESSAGE_READ else");
 					ImageButton secondCardImgBtn = (ImageButton) findViewById(R.id.opponentCardImgBtn);
-
+					secondCardImgBtn.setVisibility(View.VISIBLE);
 					Log.i(TAG, "Cartea primita 2: " + readMessage);
 
 					secondCard = Integer.valueOf(readMessage);
@@ -603,9 +603,9 @@ public class MainActivity extends Activity {
 				currentHandCards.clear();
 				
 				ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
-				myCard.setBackgroundColor(0xFFFFFF);
+				myCard.setVisibility(View.INVISIBLE);
 				ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
-				opponentCard.setBackgroundColor(0xFFFFFF);
+				opponentCard.setVisibility(View.INVISIBLE);
 			} else if (x == 7) {
 				if (firstHand == true) {
 					// cazul in care nu-i prima mana
@@ -619,9 +619,9 @@ public class MainActivity extends Activity {
 					firstHand = true;
 					
 					ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
-					myCard.setBackgroundColor(0xFFFFFF);
+					myCard.setVisibility(View.INVISIBLE);
 					ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
-					opponentCard.setBackgroundColor(0xFFFFFF);
+					opponentCard.setVisibility(View.INVISIBLE);
 				} else {
 					if(y == firstCardOfHand)
 					{
@@ -650,9 +650,9 @@ public class MainActivity extends Activity {
 						firstHand = true;
 						
 						ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
-						myCard.setBackgroundColor(0xFFFFFF);
+						myCard.setVisibility(View.INVISIBLE);
 						ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
-						opponentCard.setBackgroundColor(0xFFFFFF);
+						opponentCard.setVisibility(View.INVISIBLE);
 					}
 				}
 			} else {// y == 7
@@ -700,10 +700,7 @@ public class MainActivity extends Activity {
 
 	}
 
-	public void flagBtnClicked(View view) {
-		//int x = Integer.valueOf(cardsArrayList.get(firstCard).substring(3));
-		//int y = Integer.valueOf(cardsArrayList.get(secondCard).substring(3));
-		
+	public void flagBtnClicked(View view) {		
 		String message = "yourHand";
 		
 		for(int i=0; i < currentHandCards.size(); i++)
@@ -716,9 +713,9 @@ public class MainActivity extends Activity {
 		flagButton.setEnabled(false);
 		
 		ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
-		myCard.setBackgroundColor(0xFFFFFF);
+		myCard.setVisibility(View.INVISIBLE);
 		ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
-		opponentCard.setBackgroundColor(0xFFFFFF);
+		opponentCard.setVisibility(View.INVISIBLE);
 		
 	}
 
@@ -728,7 +725,7 @@ public class MainActivity extends Activity {
 				firstCardOfHand = card1;
 			firstCard = card1;
 			ImageButton imgBtn7 = (ImageButton) findViewById(R.id.myCardImgBtn);
-
+			imgBtn7.setVisibility(View.VISIBLE);
 			imgBtn7.setImageResource(MainActivity
 					.getCardDrawable(cardsArrayList.get(card1)));
 
@@ -750,7 +747,7 @@ public class MainActivity extends Activity {
 
 			secondCard = card1;
 			ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
-
+			opponentCard.setVisibility(View.VISIBLE);
 			opponentCard.setImageResource(MainActivity
 					.getCardDrawable(cardsArrayList.get(card1)));
 
@@ -778,7 +775,7 @@ public class MainActivity extends Activity {
 				firstCardOfHand = card2;
 			firstCard = card2;
 			ImageButton imgBtn7 = (ImageButton) findViewById(R.id.myCardImgBtn);
-
+			imgBtn7.setVisibility(View.VISIBLE);
 			imgBtn7.setImageResource(MainActivity
 					.getCardDrawable(cardsArrayList.get(card2)));
 
@@ -800,7 +797,7 @@ public class MainActivity extends Activity {
 
 			secondCard = card2;
 			ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
-
+			opponentCard.setVisibility(View.VISIBLE);
 			opponentCard.setImageResource(MainActivity
 					.getCardDrawable(cardsArrayList.get(card2)));
 
@@ -849,7 +846,7 @@ public class MainActivity extends Activity {
 
 			secondCard = card3;
 			ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
-
+			opponentCard.setVisibility(View.VISIBLE);
 			opponentCard.setImageResource(MainActivity
 					.getCardDrawable(cardsArrayList.get(card3)));
 
@@ -898,7 +895,7 @@ public class MainActivity extends Activity {
 
 			secondCard = card4;
 			ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
-
+			opponentCard.setVisibility(View.VISIBLE);
 			opponentCard.setImageResource(MainActivity
 					.getCardDrawable(cardsArrayList.get(card4)));
 
