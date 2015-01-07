@@ -569,6 +569,13 @@ public class MainActivity extends Activity {
 							.getCardDrawable(cardsArrayList.get(Integer
 									.valueOf(readMessage))));
 
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 					firstCardSW = true;
 
 					compare(firstCard, secondCard);
@@ -757,7 +764,7 @@ public class MainActivity extends Activity {
 		mChatService.write(message.getBytes());
 		
 		ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
-		flagButton.setEnabled(false);
+		flagButton.setVisibility(View.INVISIBLE);
 		
 		ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 		myCard.setVisibility(View.INVISIBLE);
