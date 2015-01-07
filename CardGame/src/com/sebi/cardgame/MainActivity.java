@@ -450,6 +450,7 @@ public class MainActivity extends Activity {
 
 				Log.i(TAG, "Mesajul: " + readMessage);
 
+				//takeCards
 				if (readMessage.contains("@")) {// pun cartile din mana in array-ul cu cartile luate de mine
 					Log.i(TAG, "Mesajul: " + readMessage.substring(0, 8));
 					if (readMessage.substring(0, 8).equals("yourHand")) {
@@ -473,6 +474,11 @@ public class MainActivity extends Activity {
 						imageBtn2.setEnabled(true);
 						imageBtn3.setEnabled(true);
 						imageBtn4.setEnabled(true);
+						
+						ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
+						myCard.setBackgroundColor(0xFFFFFF);
+						ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
+						opponentCard.setBackgroundColor(0xFFFFFF);
 					}
 				} else
 
@@ -588,22 +594,34 @@ public class MainActivity extends Activity {
 		
 		if (x != y)
 			if (x != 7 && y != 7) {
+				//takeCards
+				
 				takenCards.addAll(currentHandCards);
 				for (int i = 0; i < takenCards.size(); i++)
 					Log.i(TAG, "Eu am cartiile: " + takenCards.get(i));
 				firstHand = true;
 				currentHandCards.clear();
+				
+				ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
+				myCard.setBackgroundColor(0xFFFFFF);
+				ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
+				opponentCard.setBackgroundColor(0xFFFFFF);
 			} else if (x == 7) {
 				if (firstHand == true) {
 					// cazul in care nu-i prima mana
-					// si cel care o dat al doilea a luat cu cartea din prima
-					// mana
-					// if()
+					// si cel care o dat al doilea a luat cu cartea din prima mana
+
+					//takeCards
 					takenCards.addAll(currentHandCards);
 					for (int i = 0; i < takenCards.size(); i++)
 						Log.i(TAG, "Eu am cartiile: " + takenCards.get(i));
 					currentHandCards.clear();
 					firstHand = true;
+					
+					ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
+					myCard.setBackgroundColor(0xFFFFFF);
+					ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
+					opponentCard.setBackgroundColor(0xFFFFFF);
 				} else {
 					if(y == firstCardOfHand)
 					{
@@ -623,11 +641,18 @@ public class MainActivity extends Activity {
 						firstHand = false;
 					}
 					else {
+						//takeCards
+						
 						takenCards.addAll(currentHandCards);
 						for (int i = 0; i < takenCards.size(); i++)
 							Log.i(TAG, "Eu am cartiile: " + takenCards.get(i));
 						currentHandCards.clear();
 						firstHand = true;
+						
+						ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
+						myCard.setBackgroundColor(0xFFFFFF);
+						ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
+						opponentCard.setBackgroundColor(0xFFFFFF);
 					}
 				}
 			} else {// y == 7
@@ -689,6 +714,11 @@ public class MainActivity extends Activity {
 		
 		ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
 		flagButton.setEnabled(false);
+		
+		ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
+		myCard.setBackgroundColor(0xFFFFFF);
+		ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
+		opponentCard.setBackgroundColor(0xFFFFFF);
 		
 	}
 
