@@ -142,7 +142,7 @@ public class MainActivity extends Activity {
 	@Override
 	public void onStart() {
 		super.onStart();
-		Log.e(TAG, "++ ON START ++");
+		Log.i(TAG, "++ ON START ++");
 
 		// If BT is not on, request that it be enabled.
 		// setupChat() will then be called during onActivityResult
@@ -661,7 +661,7 @@ public class MainActivity extends Activity {
 						card4ImgBtn.setEnabled(true);
 
 						ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
-						flagButton.setEnabled(true);
+						flagButton.setVisibility(View.VISIBLE);
 						flagButton.setImageResource(R.drawable.whiteflag);
 						firstHand = false;
 					} else {
@@ -709,7 +709,7 @@ public class MainActivity extends Activity {
 				card4ImgBtn.setEnabled(true);
 
 				ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
-				flagButton.setEnabled(true);
+				flagButton.setVisibility(View.VISIBLE);
 				flagButton.setImageResource(R.drawable.whiteflag);
 				firstHand = false;
 
@@ -732,7 +732,7 @@ public class MainActivity extends Activity {
 			firstHand = false;
 			
 			ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
-			flagButton.setEnabled(true);
+			flagButton.setVisibility(View.VISIBLE);
 			flagButton.setImageResource(R.drawable.whiteflag);
 
 			for (int i = 0; i < takenCards.size(); i++)
@@ -751,7 +751,7 @@ public class MainActivity extends Activity {
 		mChatService.write(message.getBytes());
 
 		ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
-		flagButton.setEnabled(false);
+		flagButton.setVisibility(View.INVISIBLE);
 
 		ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 		myCard.setVisibility(View.INVISIBLE);
@@ -926,7 +926,7 @@ public class MainActivity extends Activity {
 			// card1.setImageDrawable(new ColorDrawable(0xFFFFFF));
 
 			ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
-			flagButton.setEnabled(false);
+			flagButton.setVisibility(View.INVISIBLE);
 			
 			this.card1 = -1;
 		} else {
@@ -987,7 +987,7 @@ public class MainActivity extends Activity {
 			card2.setVisibility(View.INVISIBLE);
 			// card2.setImageDrawable(new ColorDrawable(0xFFFFFF));
 			ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
-			flagButton.setEnabled(false);
+			flagButton.setVisibility(View.INVISIBLE);
 			
 			this.card2 = -1;
 		} else {
@@ -1048,7 +1048,7 @@ public class MainActivity extends Activity {
 			// card3.setImageDrawable(new ColorDrawable(0xFFFFFF));
 			
 			ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
-			flagButton.setEnabled(false);
+			flagButton.setVisibility(View.INVISIBLE);
 			this.card3 = -1;
 		} else {
 
@@ -1107,7 +1107,7 @@ public class MainActivity extends Activity {
 			card4.setVisibility(View.INVISIBLE);
 			// card4.setImageDrawable(new ColorDrawable(0xFFFFFF));
 			ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
-			flagButton.setEnabled(false);
+			flagButton.setVisibility(View.INVISIBLE);
 			this.card4 = -1;
 		} else {
 
