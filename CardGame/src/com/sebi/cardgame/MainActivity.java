@@ -3,6 +3,8 @@ package com.sebi.cardgame;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.R.integer;
 import android.app.ActionBar;
@@ -558,8 +560,25 @@ public class MainActivity extends Activity {
 									.valueOf(readMessage))));
 
 					firstCardSW = true;
+					
+					
+					new Timer().schedule(new TimerTask() {     
+						
+					    @Override
+					    public void run() {
+					    	runOnUiThread(new Runnable() {
+					    	     @Override
+					    	     public void run() {
 
-					compare(firstCard, secondCard);
+					    	//stuff that updates ui
+					    	    	 compare(firstCard, secondCard);
+					    	    }
+					    	});
+					        // this code will be executed after 2 seconds       
+					    }
+					}, 500);
+					
+					//compare(firstCard, secondCard);
 
 					break;
 				}
@@ -608,9 +627,9 @@ public class MainActivity extends Activity {
 				card4ImgBtn.setEnabled(true);
 
 				ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
-				myCard.setImageDrawable(new ColorDrawable(0xFFFFFF));
+				myCard.setVisibility(View.INVISIBLE);
 				ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
-				opponentCard.setImageDrawable(new ColorDrawable(0xFFFFFF));
+				opponentCard.setVisibility(View.INVISIBLE);;
 
 				String message = "hideCards@";
 				mChatService.write(message.getBytes());
