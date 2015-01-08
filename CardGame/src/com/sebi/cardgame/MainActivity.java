@@ -530,6 +530,9 @@ public class MainActivity extends Activity {
 									.valueOf(readMessage))));
 
 					firstCardSW = false;
+					
+					ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
+					flagButton.setEnabled(false);
 
 					break;
 				} else {// firstCard == false
@@ -749,7 +752,7 @@ public class MainActivity extends Activity {
 		mChatService.write(message.getBytes());
 
 		ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
-		flagButton.setEnabled(false);;
+		flagButton.setEnabled(false);
 
 		ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 		myCard.setVisibility(View.INVISIBLE);
