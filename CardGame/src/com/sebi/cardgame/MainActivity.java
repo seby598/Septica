@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
 	private ArrayList<Integer> dealtCards = new ArrayList<>();
 
 	private ArrayList<Integer> takenCards = new ArrayList<>();
-	
+
 	private ArrayList<Integer> currentHandCards = new ArrayList<>();
 
 	private int card1;
@@ -428,46 +428,49 @@ public class MainActivity extends Activity {
 
 				Log.i(TAG, "Mesajul: " + readMessage);
 
-				//takeCards prin flag
-				if (readMessage.contains("@")) {// pun cartile din mana in array-ul cu cartile luate de mine
+				// takeCards prin flag
+				if (readMessage.contains("@")) {// pun cartile din mana in
+												// array-ul cu cartile luate de
+												// mine
 					Log.i(TAG, "Mesajul: " + readMessage.substring(0, 8));
 					if (readMessage.substring(0, 8).equals("yourHand")) {
-						String[] handCards = (readMessage.substring(readMessage.indexOf("@") + 1)).split("@");
+						String[] handCards = (readMessage.substring(readMessage
+								.indexOf("@") + 1)).split("@");
 						for (int i = 0; i < handCards.length; i++)
 							Log.i(TAG, "Hand Cards: " + handCards[i]);
-						
+
 						for (int i = 0; i < handCards.length; i++)
 							takenCards.add(Integer.valueOf(handCards[i]));
 
 						for (int i = 0; i < takenCards.size(); i++)
 							Log.i(TAG, "Eu am cartile: " + takenCards.get(i));
 						firstHand = true;
-						
+
 						ImageButton imageBtn1 = (ImageButton) findViewById(R.id.card1);
 						ImageButton imageBtn2 = (ImageButton) findViewById(R.id.card2);
 						ImageButton imageBtn3 = (ImageButton) findViewById(R.id.card3);
 						ImageButton imageBtn4 = (ImageButton) findViewById(R.id.card4);
-						
+
 						imageBtn1.setEnabled(true);
 						imageBtn2.setEnabled(true);
 						imageBtn3.setEnabled(true);
 						imageBtn4.setEnabled(true);
-						
-						ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
-						myCard.setVisibility(View.INVISIBLE);
-						ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
-						opponentCard.setVisibility(View.INVISIBLE);				
-						
-					}
-					else if (readMessage.substring(0, 9).equals("hideCards")) {
+
 						ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 						myCard.setVisibility(View.INVISIBLE);
 						ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 						opponentCard.setVisibility(View.INVISIBLE);
-					}
-					else if (readMessage.substring(0, 9).equals("takeCards")) {
-						decarteazaUnNumarDeCarti(readMessage.substring(10,readMessage.lastIndexOf("@")),
-													readMessage.substring(readMessage.lastIndexOf("@") + 1));
+
+					} else if (readMessage.substring(0, 9).equals("hideCards")) {
+						ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
+						myCard.setVisibility(View.INVISIBLE);
+						ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
+						opponentCard.setVisibility(View.INVISIBLE);
+					} else if (readMessage.substring(0, 9).equals("takeCards")) {
+						decarteazaUnNumarDeCarti(readMessage.substring(10,
+								readMessage.lastIndexOf("@")),
+								readMessage.substring(readMessage
+										.lastIndexOf("@") + 1));
 					}
 				} else
 
@@ -552,8 +555,6 @@ public class MainActivity extends Activity {
 							.getCardDrawable(cardsArrayList.get(Integer
 									.valueOf(readMessage))));
 
-					
-					
 					firstCardSW = true;
 
 					compare(firstCard, secondCard);
@@ -582,17 +583,17 @@ public class MainActivity extends Activity {
 
 		currentHandCards.add(x);
 		currentHandCards.add(y);
-		
-		if (x != y)
+
+		if (x != y) {
 			if (x != 7 && y != 7) {
-				//takeCards
-				
+				// takeCards
+
 				takenCards.addAll(currentHandCards);
 				for (int i = 0; i < takenCards.size(); i++)
 					Log.i(TAG, "Eu am cartiile: " + takenCards.get(i));
 				firstHand = true;
 				currentHandCards.clear();
-				
+
 				ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
 				ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
 				ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
@@ -602,29 +603,30 @@ public class MainActivity extends Activity {
 				card2ImgBtn.setEnabled(true);
 				card3ImgBtn.setEnabled(true);
 				card4ImgBtn.setEnabled(true);
-				
+
 				ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 				myCard.setImageDrawable(new ColorDrawable(0xFFFFFF));
 				ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 				opponentCard.setImageDrawable(new ColorDrawable(0xFFFFFF));
-				
+
 				String message = "hideCards@";
 				mChatService.write(message.getBytes());
-				
+
 				decarteazaCarti();
-				
+
 			} else if (x == 7) {
 				if (firstHand == true) {
 					// cazul in care nu-i prima mana
-					// si cel care o dat al doilea a luat cu cartea din prima mana
+					// si cel care o dat al doilea a luat cu cartea din prima
+					// mana
 
-					//takeCards
+					// takeCards
 					takenCards.addAll(currentHandCards);
 					for (int i = 0; i < takenCards.size(); i++)
 						Log.i(TAG, "Eu am cartiile: " + takenCards.get(i));
 					currentHandCards.clear();
 					firstHand = true;
-					
+
 					ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
 					ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
 					ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
@@ -634,19 +636,18 @@ public class MainActivity extends Activity {
 					card2ImgBtn.setEnabled(true);
 					card3ImgBtn.setEnabled(true);
 					card4ImgBtn.setEnabled(true);
-					
+
 					ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 					myCard.setVisibility(View.INVISIBLE);
 					ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 					opponentCard.setVisibility(View.INVISIBLE);
-					
+
 					String message = "hideCards@";
 					mChatService.write(message.getBytes());
-					
+
 					decarteazaCarti();
 				} else {
-					if(y == firstCardOfHand)
-					{
+					if (y == firstCardOfHand) {
 						ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
 						ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
 						ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
@@ -661,16 +662,15 @@ public class MainActivity extends Activity {
 						flagButton.setEnabled(true);
 						flagButton.setImageResource(R.drawable.whiteflag);
 						firstHand = false;
-					}
-					else {
-						//takeCards
-						
+					} else {
+						// takeCards
+
 						takenCards.addAll(currentHandCards);
 						for (int i = 0; i < takenCards.size(); i++)
 							Log.i(TAG, "Eu am cartiile: " + takenCards.get(i));
 						currentHandCards.clear();
 						firstHand = true;
-						
+
 						ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
 						ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
 						ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
@@ -680,15 +680,15 @@ public class MainActivity extends Activity {
 						card2ImgBtn.setEnabled(true);
 						card3ImgBtn.setEnabled(true);
 						card4ImgBtn.setEnabled(true);
-						
+
 						ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 						myCard.setVisibility(View.INVISIBLE);
 						ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 						opponentCard.setVisibility(View.INVISIBLE);
-						
+
 						String message = "hideCards@";
 						mChatService.write(message.getBytes());
-						
+
 						decarteazaCarti();
 					}
 				}
@@ -715,7 +715,7 @@ public class MainActivity extends Activity {
 					Log.i(TAG, "Eu am cartile: " + takenCards.get(i));
 
 			}
-		else {
+		} else {
 			Log.i(TAG, "Cartile sunt egale");
 			ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
 			ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
@@ -737,149 +737,153 @@ public class MainActivity extends Activity {
 
 	}
 
-
-
-	public void flagBtnClicked(View view) {		
+	public void flagBtnClicked(View view) {
 		String message = "yourHand";
-		
-		for(int i=0; i < currentHandCards.size(); i++)
+
+		for (int i = 0; i < currentHandCards.size(); i++)
 			message = message + "@" + currentHandCards.get(i);
-		
+
 		currentHandCards.clear();
 		mChatService.write(message.getBytes());
-		
+
 		ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
 		flagButton.setVisibility(View.INVISIBLE);
-		
+
 		ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 		myCard.setVisibility(View.INVISIBLE);
 		ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 		opponentCard.setVisibility(View.INVISIBLE);
-		
+
 		decarteazaCarti();
-		
+
 	}
 
 	private void decarteazaCarti() {
 		int numberOfCardsLeft = (32 - usedCardsCounter) / 2;
 		int totalCardsTaken = 0;
-		
-		if(numberOfCardsLeft > 0)
-		if(card1 == -1)
-		{
-			
-			usedCardsCounter++;
-			card1 = dealtCards.get(usedCardsCounter);
-			Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card1);
-			Toast.makeText(this, "Iau cartea nr " + usedCardsCounter + " : " + card1,Toast.LENGTH_LONG).show();
-			ImageButton cardImgBtn1 = (ImageButton) findViewById(R.id.card1);
-			cardImgBtn1.setVisibility(View.VISIBLE);
-			cardImgBtn1.setImageResource(MainActivity
-					.getCardDrawable(cardsArrayList.get(card1)));
-			numberOfCardsLeft--;
-			totalCardsTaken++;
-		}
-		if(numberOfCardsLeft > 0)
-		if(card2 == -1)
-		{
-			usedCardsCounter++;
-			card2 = dealtCards.get(usedCardsCounter);
-			Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card2);
-			Toast.makeText(this, "Iau cartea nr " + usedCardsCounter + " : " + card2,Toast.LENGTH_LONG).show();
-			ImageButton cardImgBtn2 = (ImageButton) findViewById(R.id.card2);
-			cardImgBtn2.setVisibility(View.VISIBLE);
-			cardImgBtn2.setImageResource(MainActivity
-					.getCardDrawable(cardsArrayList.get(card2)));
-			numberOfCardsLeft--;
-			totalCardsTaken++;
-		}
-		if(numberOfCardsLeft > 0)
-		if(card3 == -1)
-		{
-			usedCardsCounter++;
-			card3 = dealtCards.get(usedCardsCounter);
-			Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card3);
-			Toast.makeText(this, "Iau cartea nr " + usedCardsCounter + " : " + card3,Toast.LENGTH_LONG).show();
-			ImageButton cardImgBtn3 = (ImageButton) findViewById(R.id.card3);
-			cardImgBtn3.setVisibility(View.VISIBLE);
-			cardImgBtn3.setImageResource(MainActivity
-					.getCardDrawable(cardsArrayList.get(card3)));
-			numberOfCardsLeft--;
-			totalCardsTaken++;
-		}
-		if(numberOfCardsLeft > 0)
-		if(card4 == -1)
-		{
-			usedCardsCounter++;
-			card4 = dealtCards.get(usedCardsCounter);
-			Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card4);
-			Toast.makeText(this, "Iau cartea nr " + usedCardsCounter + " : " + card4,Toast.LENGTH_LONG).show();
-			ImageButton cardImgBtn4 = (ImageButton) findViewById(R.id.card4);
-			cardImgBtn4.setVisibility(View.VISIBLE);
-			cardImgBtn4.setImageResource(MainActivity
-					.getCardDrawable(cardsArrayList.get(card4)));
-			numberOfCardsLeft--;
-			totalCardsTaken++;
-		}
-		
-		
-		
-		String message = "takeCards@" + totalCardsTaken + "@" + usedCardsCounter;
-		usedCardsCounter = usedCardsCounter + totalCardsTaken;
-		mChatService.write(message.getBytes());
-	}
-	
-	private void decarteazaUnNumarDeCarti(String substring, String counter) {
-		int numberOfCardsToTake = Integer.valueOf(substring);
-		usedCardsCounter = Integer.valueOf(counter);
-		
-		
-		if(numberOfCardsToTake > 0)
-			if(card1 == -1)
-			{
+
+		if (numberOfCardsLeft > 0)
+			if (card1 == -1) {
+
 				usedCardsCounter++;
 				card1 = dealtCards.get(usedCardsCounter);
 				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card1);
-				Toast.makeText(this, "Iau cartea nr " + usedCardsCounter + " : " + card1,Toast.LENGTH_LONG).show();
+				Toast.makeText(this,
+						"Iau cartea nr " + usedCardsCounter + " : " + card1,
+						Toast.LENGTH_LONG).show();
+				ImageButton cardImgBtn1 = (ImageButton) findViewById(R.id.card1);
+				cardImgBtn1.setVisibility(View.VISIBLE);
+				cardImgBtn1.setImageResource(MainActivity
+						.getCardDrawable(cardsArrayList.get(card1)));
+				numberOfCardsLeft--;
+				totalCardsTaken++;
+			}
+		if (numberOfCardsLeft > 0)
+			if (card2 == -1) {
+				usedCardsCounter++;
+				card2 = dealtCards.get(usedCardsCounter);
+				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card2);
+				Toast.makeText(this,
+						"Iau cartea nr " + usedCardsCounter + " : " + card2,
+						Toast.LENGTH_LONG).show();
+				ImageButton cardImgBtn2 = (ImageButton) findViewById(R.id.card2);
+				cardImgBtn2.setVisibility(View.VISIBLE);
+				cardImgBtn2.setImageResource(MainActivity
+						.getCardDrawable(cardsArrayList.get(card2)));
+				numberOfCardsLeft--;
+				totalCardsTaken++;
+			}
+		if (numberOfCardsLeft > 0)
+			if (card3 == -1) {
+				usedCardsCounter++;
+				card3 = dealtCards.get(usedCardsCounter);
+				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card3);
+				Toast.makeText(this,
+						"Iau cartea nr " + usedCardsCounter + " : " + card3,
+						Toast.LENGTH_LONG).show();
+				ImageButton cardImgBtn3 = (ImageButton) findViewById(R.id.card3);
+				cardImgBtn3.setVisibility(View.VISIBLE);
+				cardImgBtn3.setImageResource(MainActivity
+						.getCardDrawable(cardsArrayList.get(card3)));
+				numberOfCardsLeft--;
+				totalCardsTaken++;
+			}
+		if (numberOfCardsLeft > 0)
+			if (card4 == -1) {
+				usedCardsCounter++;
+				card4 = dealtCards.get(usedCardsCounter);
+				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card4);
+				Toast.makeText(this,
+						"Iau cartea nr " + usedCardsCounter + " : " + card4,
+						Toast.LENGTH_LONG).show();
+				ImageButton cardImgBtn4 = (ImageButton) findViewById(R.id.card4);
+				cardImgBtn4.setVisibility(View.VISIBLE);
+				cardImgBtn4.setImageResource(MainActivity
+						.getCardDrawable(cardsArrayList.get(card4)));
+				numberOfCardsLeft--;
+				totalCardsTaken++;
+			}
+
+		String message = "takeCards@" + totalCardsTaken + "@"
+				+ usedCardsCounter;
+		usedCardsCounter = usedCardsCounter + totalCardsTaken;
+		mChatService.write(message.getBytes());
+	}
+
+	private void decarteazaUnNumarDeCarti(String substring, String counter) {
+		int numberOfCardsToTake = Integer.valueOf(substring);
+		usedCardsCounter = Integer.valueOf(counter);
+
+		if (numberOfCardsToTake > 0)
+			if (card1 == -1) {
+				usedCardsCounter++;
+				card1 = dealtCards.get(usedCardsCounter);
+				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card1);
+				Toast.makeText(this,
+						"Iau cartea nr " + usedCardsCounter + " : " + card1,
+						Toast.LENGTH_LONG).show();
 				ImageButton cardImgBtn1 = (ImageButton) findViewById(R.id.card1);
 				cardImgBtn1.setVisibility(View.VISIBLE);
 				cardImgBtn1.setImageResource(MainActivity
 						.getCardDrawable(cardsArrayList.get(card1)));
 				numberOfCardsToTake--;
 			}
-			if(numberOfCardsToTake > 0)
-			if(card2 == -1)
-			{
+		if (numberOfCardsToTake > 0)
+			if (card2 == -1) {
 				usedCardsCounter++;
 				card2 = dealtCards.get(usedCardsCounter);
 				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card2);
-				Toast.makeText(this, "Iau cartea nr " + usedCardsCounter + " : " + card2,Toast.LENGTH_LONG).show();
+				Toast.makeText(this,
+						"Iau cartea nr " + usedCardsCounter + " : " + card2,
+						Toast.LENGTH_LONG).show();
 				ImageButton cardImgBtn2 = (ImageButton) findViewById(R.id.card2);
 				cardImgBtn2.setVisibility(View.VISIBLE);
 				cardImgBtn2.setImageResource(MainActivity
 						.getCardDrawable(cardsArrayList.get(card2)));
 				numberOfCardsToTake--;
 			}
-			if(numberOfCardsToTake > 0)
-			if(card3 == -1)
-			{
+		if (numberOfCardsToTake > 0)
+			if (card3 == -1) {
 				usedCardsCounter++;
 				card3 = dealtCards.get(usedCardsCounter);
 				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card3);
-				Toast.makeText(this, "Iau cartea nr " + usedCardsCounter + " : " + card3,Toast.LENGTH_LONG).show();
+				Toast.makeText(this,
+						"Iau cartea nr " + usedCardsCounter + " : " + card3,
+						Toast.LENGTH_LONG).show();
 				ImageButton cardImgBtn3 = (ImageButton) findViewById(R.id.card3);
 				cardImgBtn3.setVisibility(View.VISIBLE);
 				cardImgBtn3.setImageResource(MainActivity
 						.getCardDrawable(cardsArrayList.get(card3)));
 				numberOfCardsToTake--;
 			}
-			if(numberOfCardsToTake > 0)
-			if(card4 == -1)
-			{
+		if (numberOfCardsToTake > 0)
+			if (card4 == -1) {
 				usedCardsCounter++;
 				card4 = dealtCards.get(usedCardsCounter);
 				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card4);
-				Toast.makeText(this, "Iau cartea nr " + usedCardsCounter + " : " + card4,Toast.LENGTH_LONG).show();
+				Toast.makeText(this,
+						"Iau cartea nr " + usedCardsCounter + " : " + card4,
+						Toast.LENGTH_LONG).show();
 				ImageButton cardImgBtn4 = (ImageButton) findViewById(R.id.card4);
 				cardImgBtn4.setVisibility(View.VISIBLE);
 				cardImgBtn4.setImageResource(MainActivity
@@ -889,7 +893,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void imgBtn1Clicked(View view) {
-		
+
 		if (firstCardSW == true) {
 			if (firstHand == true)
 				firstCardOfHand = card1;
@@ -913,11 +917,10 @@ public class MainActivity extends Activity {
 			card2.setEnabled(false);
 			card3.setEnabled(false);
 			card4.setEnabled(false);
-			
-			
+
 			card1.setVisibility(View.INVISIBLE);
-			//card1.setImageDrawable(new ColorDrawable(0xFFFFFF));
-			
+			// card1.setImageDrawable(new ColorDrawable(0xFFFFFF));
+
 			this.card1 = -1;
 		} else {
 
@@ -941,9 +944,9 @@ public class MainActivity extends Activity {
 			card2.setEnabled(false);
 			card3.setEnabled(false);
 			card4.setEnabled(false);
-			
+
 			card1.setVisibility(View.INVISIBLE);
-			//card1.setImageDrawable(new ColorDrawable(0xFFFFFF));
+			// card1.setImageDrawable(new ColorDrawable(0xFFFFFF));
 			this.card1 = -1;
 		}
 
@@ -973,9 +976,9 @@ public class MainActivity extends Activity {
 			card2.setEnabled(false);
 			card3.setEnabled(false);
 			card4.setEnabled(false);
-			
+
 			card2.setVisibility(View.INVISIBLE);
-			//card2.setImageDrawable(new ColorDrawable(0xFFFFFF));
+			// card2.setImageDrawable(new ColorDrawable(0xFFFFFF));
 			this.card2 = -1;
 		} else {
 
@@ -999,9 +1002,9 @@ public class MainActivity extends Activity {
 			card2.setEnabled(false);
 			card3.setEnabled(false);
 			card4.setEnabled(false);
-			
+
 			card2.setVisibility(View.INVISIBLE);
-			//card2.setImageDrawable(new ColorDrawable(0xFFFFFF));
+			// card2.setImageDrawable(new ColorDrawable(0xFFFFFF));
 			this.card2 = -1;
 		}
 	}
@@ -1030,9 +1033,9 @@ public class MainActivity extends Activity {
 			card2.setEnabled(false);
 			card3.setEnabled(false);
 			card4.setEnabled(false);
-			
+
 			card3.setVisibility(View.INVISIBLE);
-			//card3.setImageDrawable(new ColorDrawable(0xFFFFFF));
+			// card3.setImageDrawable(new ColorDrawable(0xFFFFFF));
 			this.card3 = -1;
 		} else {
 
@@ -1056,9 +1059,9 @@ public class MainActivity extends Activity {
 			card2.setEnabled(false);
 			card3.setEnabled(false);
 			card4.setEnabled(false);
-			
+
 			card3.setVisibility(View.INVISIBLE);
-			//card3.setImageDrawable(new ColorDrawable(0xFFFFFF));
+			// card3.setImageDrawable(new ColorDrawable(0xFFFFFF));
 			this.card3 = -1;
 		}
 	}
@@ -1087,9 +1090,9 @@ public class MainActivity extends Activity {
 			card2.setEnabled(false);
 			card3.setEnabled(false);
 			card4.setEnabled(false);
-			
+
 			card4.setVisibility(View.INVISIBLE);
-			//card4.setImageDrawable(new ColorDrawable(0xFFFFFF));
+			// card4.setImageDrawable(new ColorDrawable(0xFFFFFF));
 			this.card4 = -1;
 		} else {
 
@@ -1113,9 +1116,9 @@ public class MainActivity extends Activity {
 			card2.setEnabled(false);
 			card3.setEnabled(false);
 			card4.setEnabled(false);
-			
+
 			card4.setVisibility(View.INVISIBLE);
-			//card4.setImageDrawable(new ColorDrawable(0xFFFFFF));
+			// card4.setImageDrawable(new ColorDrawable(0xFFFFFF));
 			this.card4 = -1;
 		}
 	}
