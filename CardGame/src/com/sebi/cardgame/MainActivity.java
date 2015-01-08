@@ -545,6 +545,8 @@ public class MainActivity extends Activity {
 					ImageButton imageBtn7 = (ImageButton) findViewById(R.id.myCardImgBtn);
 					imageBtn7.setVisibility(View.VISIBLE);
 					imageBtn7.bringToFront();
+					imageBtn7.requestLayout();
+					imageBtn7.invalidate();
 					Log.i(TAG, "Cartea primita 1: " + readMessage);
 
 					firstCard = Integer.valueOf(readMessage);
@@ -574,6 +576,8 @@ public class MainActivity extends Activity {
 					ImageButton secondCardImgBtn = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 					secondCardImgBtn.setVisibility(View.VISIBLE);
 					secondCardImgBtn.bringToFront();
+					secondCardImgBtn.requestLayout();
+					secondCardImgBtn.invalidate();
 					Log.i(TAG, "Cartea primita 2: " + readMessage);
 
 					secondCard = Integer.valueOf(readMessage);
