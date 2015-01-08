@@ -758,8 +758,17 @@ public class MainActivity extends Activity {
 		ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 		opponentCard.setVisibility(View.INVISIBLE);
 
-		decarteazaCarti();
+		ImageButton card1 = (ImageButton) findViewById(R.id.card1);
+		ImageButton card2 = (ImageButton) findViewById(R.id.card2);
+		ImageButton card3 = (ImageButton) findViewById(R.id.card3);
+		ImageButton card4 = (ImageButton) findViewById(R.id.card4);
 
+		card1.setEnabled(false);
+		card2.setEnabled(false);
+		card3.setEnabled(false);
+		card4.setEnabled(false);
+		
+		decarteazaCarti();
 	}
 
 	private void decarteazaCarti() {
