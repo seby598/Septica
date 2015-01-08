@@ -592,7 +592,7 @@ public class MainActivity extends Activity {
 
 				takenCards.addAll(currentHandCards);
 				for (int i = 0; i < takenCards.size(); i++)
-					Log.i(TAG, "Eu am cartiile: " + takenCards.get(i));
+					Log.i(TAG, "Eu am cartile: " + takenCards.get(i));
 				firstHand = true;
 				currentHandCards.clear();
 
@@ -837,10 +837,14 @@ public class MainActivity extends Activity {
 				totalCardsTaken++;
 			}
 
-		String message = "takeCards@" + totalCardsTaken + "@"
-				+ usedCardsCounter;
-		usedCardsCounter = usedCardsCounter + totalCardsTaken;
+		
+		String message = "takeCards@";
+		
+		message = message + totalCardsTaken + "@" + usedCardsCounter;
 		mChatService.write(message.getBytes());
+		
+		usedCardsCounter = usedCardsCounter + totalCardsTaken;
+		
 	}
 
 	private void decarteazaUnNumarDeCarti(String substring, String counter) {
