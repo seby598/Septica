@@ -577,13 +577,6 @@ public class MainActivity extends Activity {
 		currentHandCards.add(x);
 		currentHandCards.add(y);
 		
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		if (x != y)
 			if (x != 7 && y != 7) {
 				//takeCards
