@@ -531,8 +531,7 @@ public class MainActivity extends Activity {
 
 					firstCardSW = false;
 					
-					ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
-					flagButton.setEnabled(false);
+					
 
 					break;
 				} else {// firstCard == false
@@ -926,6 +925,9 @@ public class MainActivity extends Activity {
 			card1.setVisibility(View.INVISIBLE);
 			// card1.setImageDrawable(new ColorDrawable(0xFFFFFF));
 
+			ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
+			flagButton.setEnabled(false);
+			
 			this.card1 = -1;
 		} else {
 
@@ -984,6 +986,9 @@ public class MainActivity extends Activity {
 
 			card2.setVisibility(View.INVISIBLE);
 			// card2.setImageDrawable(new ColorDrawable(0xFFFFFF));
+			ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
+			flagButton.setEnabled(false);
+			
 			this.card2 = -1;
 		} else {
 
@@ -1041,6 +1046,9 @@ public class MainActivity extends Activity {
 
 			card3.setVisibility(View.INVISIBLE);
 			// card3.setImageDrawable(new ColorDrawable(0xFFFFFF));
+			
+			ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
+			flagButton.setEnabled(false);
 			this.card3 = -1;
 		} else {
 
@@ -1098,6 +1106,8 @@ public class MainActivity extends Activity {
 
 			card4.setVisibility(View.INVISIBLE);
 			// card4.setImageDrawable(new ColorDrawable(0xFFFFFF));
+			ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
+			flagButton.setEnabled(false);
 			this.card4 = -1;
 		} else {
 
