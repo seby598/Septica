@@ -544,6 +544,7 @@ public class MainActivity extends Activity {
 
 					ImageButton imageBtn7 = (ImageButton) findViewById(R.id.myCardImgBtn);
 					imageBtn7.setVisibility(View.VISIBLE);
+					imageBtn7.bringToFront();
 					Log.i(TAG, "Cartea primita 1: " + readMessage);
 
 					firstCard = Integer.valueOf(readMessage);
@@ -572,6 +573,7 @@ public class MainActivity extends Activity {
 					Log.i(TAG, "MESSAGE_READ else");
 					ImageButton secondCardImgBtn = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 					secondCardImgBtn.setVisibility(View.VISIBLE);
+					secondCardImgBtn.bringToFront();
 					Log.i(TAG, "Cartea primita 2: " + readMessage);
 
 					secondCard = Integer.valueOf(readMessage);
