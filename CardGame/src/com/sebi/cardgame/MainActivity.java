@@ -660,7 +660,17 @@ public class MainActivity extends Activity {
 				String message = "hideCards@";
 				mChatService.write(message.getBytes());
 
-				decarteazaCarti();
+				new Timer().schedule(new TimerTask() {     
+					
+				    @Override
+				    public void run() {
+				    	//stuff that updates ui
+				    	    	 decarteazaCarti();
+				    	    }
+				        // this code will be executed after 2 seconds       
+				}, 100);
+				
+				
 
 			} else if (x == 7) {
 				if (firstHand == true) {
@@ -694,7 +704,15 @@ public class MainActivity extends Activity {
 					String message = "hideCards@";
 					mChatService.write(message.getBytes());
 
-					decarteazaCarti();
+					new Timer().schedule(new TimerTask() {     
+						
+					    @Override
+					    public void run() {
+					    	//stuff that updates ui
+					    	    	 decarteazaCarti();
+					    	    }
+					        // this code will be executed after 2 seconds       
+					}, 100);
 				} else {
 					if (y == firstCardOfHand) {
 						Log.i(TAG, "x ii 7 si nu ii prima mana, iar y = prima carte");
@@ -741,7 +759,15 @@ public class MainActivity extends Activity {
 						String message = "hideCards@";
 						mChatService.write(message.getBytes());
 
-						decarteazaCarti();
+						new Timer().schedule(new TimerTask() {     
+							
+						    @Override
+						    public void run() {
+						    	//stuff that updates ui
+						    	    	 decarteazaCarti();
+						    	    }
+						        // this code will be executed after 2 seconds       
+						}, 100);
 					}
 				}
 			} else {// y == 7
@@ -818,7 +844,15 @@ public class MainActivity extends Activity {
 		card3.setEnabled(false);
 		card4.setEnabled(false);
 		
-		decarteazaCarti();
+		new Timer().schedule(new TimerTask() {     
+			
+		    @Override
+		    public void run() {
+		    	//stuff that updates ui
+		    	    	 decarteazaCarti();
+		    	    }
+		        // this code will be executed after 2 seconds       
+		}, 100);
 	}
 
 	private void decarteazaCarti() {
