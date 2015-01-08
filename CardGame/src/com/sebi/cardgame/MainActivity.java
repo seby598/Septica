@@ -448,11 +448,26 @@ public class MainActivity extends Activity {
 							for (int i = 0; i < takenCards.size(); i++)
 								Log.i(TAG, "Eu am cartile: " + takenCards.get(i));
 							firstHand = true;
-						}
-						else
+							
 							decarteazaUnNumarDeCarti(readMessage.substring(readMessage.indexOf("takeCards") + 10,readMessage.lastIndexOf("@")),
 									readMessage.substring(readMessage.lastIndexOf("@") + 1));
-						
+						}
+						else
+							
+						{
+							String[] handCards = (readMessage.substring((readMessage.indexOf("@") + 1))).split("@");
+							for (int i = 0; i < handCards.length; i++)
+								Log.i(TAG, "Hand Cards: " + handCards[i]);
+
+							for (int i = 0; i < handCards.length; i++)
+								takenCards.add(Integer.valueOf(handCards[i]));
+
+							for (int i = 0; i < takenCards.size(); i++)
+								Log.i(TAG, "Eu am cartile: " + takenCards.get(i));
+							firstHand = true;
+							
+							
+						}
 
 						ImageButton imageBtn1 = (ImageButton) findViewById(R.id.card1);
 						ImageButton imageBtn2 = (ImageButton) findViewById(R.id.card2);
