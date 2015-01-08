@@ -954,10 +954,16 @@ public class MainActivity extends Activity {
 	}
 
 	public void imgBtn1Clicked(View view) {
-
+		
+		ImageButton firstImgBtn = (ImageButton) findViewById(R.id.myCardImgBtn);
+		ImageButton secondImgBtn = (ImageButton) findViewById(R.id.opponentCardImgBtn);
+		
 		if (firstCardSW == true) {
+			
+			firstImgBtn.bringToFront();
 			if (firstHand == true)
 				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card1).substring(3));
+
 			firstCard = card1;
 			ImageButton imgBtn7 = (ImageButton) findViewById(R.id.myCardImgBtn);
 			imgBtn7.setVisibility(View.VISIBLE);
@@ -988,6 +994,7 @@ public class MainActivity extends Activity {
 			this.card1 = -1;
 		} else {
 
+			secondImgBtn.bringToFront();
 			secondCard = card1;
 			ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 			opponentCard.setVisibility(View.VISIBLE);
@@ -1017,9 +1024,15 @@ public class MainActivity extends Activity {
 	}
 
 	public void imgBtn2Clicked(View view) {
+		
+		ImageButton firstImgBtn = (ImageButton) findViewById(R.id.myCardImgBtn);
+		ImageButton secondImgBtn = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 		if (firstCardSW == true) {
+			
+			firstImgBtn.bringToFront();
 			if (firstHand == true)
-				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card2).substring(3));;
+				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card2).substring(3));
+			
 			firstCard = card2;
 			ImageButton imgBtn7 = (ImageButton) findViewById(R.id.myCardImgBtn);
 			imgBtn7.setVisibility(View.VISIBLE);
@@ -1049,6 +1062,7 @@ public class MainActivity extends Activity {
 			this.card2 = -1;
 		} else {
 
+			secondImgBtn.bringToFront();
 			secondCard = card2;
 			ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 			opponentCard.setVisibility(View.VISIBLE);
@@ -1077,9 +1091,14 @@ public class MainActivity extends Activity {
 	}
 
 	public void imgBtn3Clicked(View view) {
+		ImageButton firstImgBtn = (ImageButton) findViewById(R.id.myCardImgBtn);
+		ImageButton secondImgBtn = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 		if (firstCardSW == true) {
+			
+			firstImgBtn.bringToFront();
 			if (firstHand == true)
-				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card3).substring(3));;
+				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card3).substring(3));
+			
 			firstCard = card3;
 			ImageButton imgBtn7 = (ImageButton) findViewById(R.id.myCardImgBtn);
 			imgBtn7.setVisibility(View.VISIBLE);
@@ -1108,7 +1127,7 @@ public class MainActivity extends Activity {
 			flagButton.setVisibility(View.INVISIBLE);
 			this.card3 = -1;
 		} else {
-
+			secondImgBtn.bringToFront();
 			secondCard = card3;
 			ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 			opponentCard.setVisibility(View.VISIBLE);
@@ -1137,9 +1156,14 @@ public class MainActivity extends Activity {
 	}
 
 	public void imgBtn4Clicked(View view) {
+		ImageButton firstImgBtn = (ImageButton) findViewById(R.id.myCardImgBtn);
+		ImageButton secondImgBtn = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 		if (firstCardSW == true) {
+
+			firstImgBtn.bringToFront();
 			if (firstHand == true)
-				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card4).substring(3));;
+				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card4).substring(3));				
+			
 			firstCard = card4;
 			ImageButton imgBtn7 = (ImageButton) findViewById(R.id.myCardImgBtn);
 			imgBtn7.setVisibility(View.VISIBLE);
@@ -1167,7 +1191,7 @@ public class MainActivity extends Activity {
 			flagButton.setVisibility(View.INVISIBLE);
 			this.card4 = -1;
 		} else {
-
+			secondImgBtn.bringToFront();
 			secondCard = card4;
 			ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 			opponentCard.setVisibility(View.VISIBLE);
