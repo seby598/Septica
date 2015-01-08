@@ -66,16 +66,6 @@
         android:src="@drawable/back"
         android:onClick="deckCLicked" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/deckImgBtn"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_marginTop="34dp"
-        android:rotation="90"
-        android:text="TextView" />
-
     <ImageButton
         android:id="@+id/myCardImgBtn"
         android:layout_width="wrap_content"
@@ -93,5 +83,15 @@
         android:layout_below="@+id/myCardImgBtn"
         android:layout_marginTop="-40dp"
         android:background="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/linearLayout1"
+        android:layout_alignRight="@+id/deckImgBtn"
+        android:layout_marginBottom="17dp"
+        android:rotation="90"
+        android:text="@string/my_score" />
 
 </RelativeLayout>
