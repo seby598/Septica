@@ -415,8 +415,32 @@ public class MainActivity extends Activity {
 					imgBtn4.setImageResource(MainActivity
 							.getCardDrawable(cardsArrayList.get(dealtCards
 									.get(3))));
+
 					gameStarted = true;
-				}
+
+					
+				} /*else {
+
+					ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
+					ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
+					ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
+					ImageButton card4ImgBtn = (ImageButton) findViewById(R.id.card4);
+
+					card1ImgBtn.setEnabled(false);
+					card2ImgBtn.setEnabled(false);
+					card3ImgBtn.setEnabled(false);
+					card4ImgBtn.setEnabled(false);
+
+					Log.i(TAG, "Message_write else");
+					
+					 * String message = "";
+					 * 
+					 * message
+					 * 
+					 * mChatService.write(message.getBytes());
+					 
+					break;
+				}*/
 				break;
 			case MESSAGE_READ:
 
@@ -545,7 +569,12 @@ public class MainActivity extends Activity {
 							.getCardDrawable(cardsArrayList.get(Integer
 									.valueOf(readMessage))));
 
-					
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
 					firstCardSW = true;
 
@@ -575,13 +604,6 @@ public class MainActivity extends Activity {
 
 		currentHandCards.add(x);
 		currentHandCards.add(y);
-		
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		if (x != y)
 			if (x != 7 && y != 7) {
