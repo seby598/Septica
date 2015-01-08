@@ -587,9 +587,10 @@ public class MainActivity extends Activity {
 		currentHandCards.add(y);
 
 		if (x != y) {
+			Log.i(TAG, "Cartile sunt diferite");
 			if (x != 7 && y != 7) {
 				// takeCards
-
+				Log.i(TAG, "Si ambele sunt diferite de 7");
 				takenCards.addAll(currentHandCards);
 				for (int i = 0; i < takenCards.size(); i++)
 					Log.i(TAG, "Eu am cartile: " + takenCards.get(i));
@@ -618,6 +619,7 @@ public class MainActivity extends Activity {
 
 			} else if (x == 7) {
 				if (firstHand == true) {
+					Log.i(TAG, "x ii 7 si ii prima mana");
 					// cazul in care nu-i prima mana
 					// si cel care o dat al doilea a luat cu cartea din prima
 					// mana
@@ -650,6 +652,8 @@ public class MainActivity extends Activity {
 					decarteazaCarti();
 				} else {
 					if (y == firstCardOfHand) {
+						Log.i(TAG, "x ii 7 si nu ii prima mana, iar y = prima carte");
+						Log.i(TAG, "Prima carte: " + firstCardOfHand);
 						ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
 						ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
 						ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
@@ -666,7 +670,8 @@ public class MainActivity extends Activity {
 						firstHand = false;
 					} else {
 						// takeCards
-
+						Log.i(TAG, "x ii 7 si nu ii prima mana, iar y != prima carte");
+						Log.i(TAG, "Prima carte: " + firstCardOfHand);
 						takenCards.addAll(currentHandCards);
 						for (int i = 0; i < takenCards.size(); i++)
 							Log.i(TAG, "Eu am cartiile: " + takenCards.get(i));
@@ -695,7 +700,7 @@ public class MainActivity extends Activity {
 					}
 				}
 			} else {// y == 7
-
+				Log.i(TAG, "y ii 7");
 				// trimite cartile la adversar
 
 				ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
