@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -415,32 +416,8 @@ public class MainActivity extends Activity {
 					imgBtn4.setImageResource(MainActivity
 							.getCardDrawable(cardsArrayList.get(dealtCards
 									.get(3))));
-
 					gameStarted = true;
-
-					
-				} /*else {
-
-					ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
-					ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
-					ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
-					ImageButton card4ImgBtn = (ImageButton) findViewById(R.id.card4);
-
-					card1ImgBtn.setEnabled(false);
-					card2ImgBtn.setEnabled(false);
-					card3ImgBtn.setEnabled(false);
-					card4ImgBtn.setEnabled(false);
-
-					Log.i(TAG, "Message_write else");
-					
-					 * String message = "";
-					 * 
-					 * message
-					 * 
-					 * mChatService.write(message.getBytes());
-					 
-					break;
-				}*/
+				}
 				break;
 			case MESSAGE_READ:
 
@@ -569,12 +546,7 @@ public class MainActivity extends Activity {
 							.getCardDrawable(cardsArrayList.get(Integer
 									.valueOf(readMessage))));
 
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					
 					
 					firstCardSW = true;
 
@@ -605,6 +577,13 @@ public class MainActivity extends Activity {
 		currentHandCards.add(x);
 		currentHandCards.add(y);
 		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		if (x != y)
 			if (x != 7 && y != 7) {
 				//takeCards
@@ -626,9 +605,9 @@ public class MainActivity extends Activity {
 				card4ImgBtn.setEnabled(true);
 				
 				ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
-				myCard.setVisibility(View.INVISIBLE);
+				myCard.setImageDrawable(new ColorDrawable(0xFFFFFF));
 				ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
-				opponentCard.setVisibility(View.INVISIBLE);
+				opponentCard.setImageDrawable(new ColorDrawable(0xFFFFFF));
 				
 				String message = "hideCards@";
 				mChatService.write(message.getBytes());
