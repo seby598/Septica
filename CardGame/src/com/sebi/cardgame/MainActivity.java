@@ -434,7 +434,7 @@ public class MainActivity extends Activity {
 				if (readMessage.contains("@")) {// pun cartile din mana in
 												// array-ul cu cartile luate de
 												// mine
-					Log.i(TAG, "Mesajul: " + readMessage.substring(0, 8));
+					Log.i(TAG, "Mesajul cu @: " + readMessage);
 					if (readMessage.substring(0, 8).equals("yourHand")) {
 						if(readMessage.contains("takeCards"))
 						{							
