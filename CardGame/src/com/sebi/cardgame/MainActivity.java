@@ -747,7 +747,7 @@ public class MainActivity extends Activity {
 		mChatService.write(message.getBytes());
 
 		ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
-		flagButton.setVisibility(View.INVISIBLE);
+		flagButton.setEnabled(false);;
 
 		ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 		myCard.setVisibility(View.INVISIBLE);
