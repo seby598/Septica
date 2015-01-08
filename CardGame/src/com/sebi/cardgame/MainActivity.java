@@ -727,6 +727,8 @@ public class MainActivity extends Activity {
 			card3ImgBtn.setEnabled(true);
 			card4ImgBtn.setEnabled(true);
 
+			firstHand = false;
+			
 			ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
 			flagButton.setEnabled(true);
 			flagButton.setImageResource(R.drawable.whiteflag);
