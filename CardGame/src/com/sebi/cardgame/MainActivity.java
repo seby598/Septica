@@ -660,17 +660,7 @@ public class MainActivity extends Activity {
 				String message = "hideCards@";
 				mChatService.write(message.getBytes());
 
-				new Timer().schedule(new TimerTask() {     
-					
-				    @Override
-				    public void run() {
-				    	//stuff that updates ui
-				    	    	 decarteazaCarti();
-				    	    }
-				        // this code will be executed after 2 seconds       
-				}, 100);
-				
-				
+				decarteazaCarti();
 
 			} else if (x == 7) {
 				if (firstHand == true) {
@@ -704,15 +694,7 @@ public class MainActivity extends Activity {
 					String message = "hideCards@";
 					mChatService.write(message.getBytes());
 
-					new Timer().schedule(new TimerTask() {     
-						
-					    @Override
-					    public void run() {
-					    	//stuff that updates ui
-					    	    	 decarteazaCarti();
-					    	    }
-					        // this code will be executed after 2 seconds       
-					}, 100);
+					decarteazaCarti();
 				} else {
 					if (y == firstCardOfHand) {
 						Log.i(TAG, "x ii 7 si nu ii prima mana, iar y = prima carte");
@@ -759,15 +741,7 @@ public class MainActivity extends Activity {
 						String message = "hideCards@";
 						mChatService.write(message.getBytes());
 
-						new Timer().schedule(new TimerTask() {     
-							
-						    @Override
-						    public void run() {
-						    	//stuff that updates ui
-						    	    	 decarteazaCarti();
-						    	    }
-						        // this code will be executed after 2 seconds       
-						}, 100);
+						decarteazaCarti();
 					}
 				}
 			} else {// y == 7
@@ -844,15 +818,7 @@ public class MainActivity extends Activity {
 		card3.setEnabled(false);
 		card4.setEnabled(false);
 		
-		new Timer().schedule(new TimerTask() {     
-			
-		    @Override
-		    public void run() {
-		    	//stuff that updates ui
-		    	    	 decarteazaCarti();
-		    	    }
-		        // this code will be executed after 2 seconds       
-		}, 100);
+		decarteazaCarti();
 	}
 
 	private void decarteazaCarti() {
@@ -1001,6 +967,8 @@ public class MainActivity extends Activity {
 		if (firstCardSW == true) {
 			
 			firstImgBtn.bringToFront();
+			firstImgBtn.requestLayout();
+			firstImgBtn.invalidate();
 			if (firstHand == true)
 				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card1).substring(3));
 
@@ -1035,6 +1003,8 @@ public class MainActivity extends Activity {
 		} else {
 
 			secondImgBtn.bringToFront();
+			secondImgBtn.requestLayout();
+			secondImgBtn.invalidate();
 			secondCard = card1;
 			ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 			opponentCard.setVisibility(View.VISIBLE);
@@ -1070,6 +1040,8 @@ public class MainActivity extends Activity {
 		if (firstCardSW == true) {
 			
 			firstImgBtn.bringToFront();
+			firstImgBtn.requestLayout();
+			firstImgBtn.invalidate();
 			if (firstHand == true)
 				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card2).substring(3));
 			
@@ -1103,6 +1075,8 @@ public class MainActivity extends Activity {
 		} else {
 
 			secondImgBtn.bringToFront();
+			secondImgBtn.requestLayout();
+			secondImgBtn.invalidate();
 			secondCard = card2;
 			ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 			opponentCard.setVisibility(View.VISIBLE);
@@ -1136,6 +1110,8 @@ public class MainActivity extends Activity {
 		if (firstCardSW == true) {
 			
 			firstImgBtn.bringToFront();
+			firstImgBtn.requestLayout();
+			firstImgBtn.invalidate();
 			if (firstHand == true)
 				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card3).substring(3));
 			
@@ -1168,6 +1144,8 @@ public class MainActivity extends Activity {
 			this.card3 = -1;
 		} else {
 			secondImgBtn.bringToFront();
+			secondImgBtn.requestLayout();
+			secondImgBtn.invalidate();
 			secondCard = card3;
 			ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 			opponentCard.setVisibility(View.VISIBLE);
@@ -1201,6 +1179,8 @@ public class MainActivity extends Activity {
 		if (firstCardSW == true) {
 
 			firstImgBtn.bringToFront();
+			firstImgBtn.requestLayout();
+			firstImgBtn.invalidate();
 			if (firstHand == true)
 				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card4).substring(3));				
 			
@@ -1232,6 +1212,8 @@ public class MainActivity extends Activity {
 			this.card4 = -1;
 		} else {
 			secondImgBtn.bringToFront();
+			secondImgBtn.requestLayout();
+			secondImgBtn.invalidate();
 			secondCard = card4;
 			ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 			opponentCard.setVisibility(View.VISIBLE);
