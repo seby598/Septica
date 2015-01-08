@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -393,7 +394,7 @@ public class MainActivity extends Activity {
 				break;
 
 			case MESSAGE_WRITE:
-
+				updateScore();
 				if (gameStarted == false) {
 
 					Log.i(TAG, "MESSAGE_STATE_CHANGE: " + msg.arg1);
@@ -423,7 +424,7 @@ public class MainActivity extends Activity {
 				}
 				break;
 			case MESSAGE_READ:
-
+				updateScore();
 				byte[] readBuf = (byte[]) msg.obj;
 				// construct a string from the valid bytes in the buffer
 				String readMessage = new String(readBuf, 0, msg.arg1);
@@ -622,8 +623,17 @@ public class MainActivity extends Activity {
 		}
 	};
 
+	private void updateScore()
+	{
+		TextView scoreTextView = (TextView) findViewById(R.id.textView1);
+		int x = 0;
+		for(int i=0; i<takenCards.size(); i++)
+			if(takenCards.get(i)>9)
+				x++;
+		scoreTextView.setText("My score: " + x);
+	}
+	
 	private void compare(int firstCard, int secondCard) {
-
 		int x = Integer.valueOf(cardsArrayList.get(firstCard).substring(3));
 		int y = Integer.valueOf(cardsArrayList.get(secondCard).substring(3));
 		Log.i(TAG, "x si y: " + x + " " + y);

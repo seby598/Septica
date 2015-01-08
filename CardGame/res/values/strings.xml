@@ -8,6 +8,7 @@
     <string name="title_not_connected">not connected</string>
     <string name="not_connected">You are not connected to a device</string>
     <string name="take_hand">Take Hand</string>
+    <string name="my_score">My score: 0</string>
 
     <!-- DeviceListActivity -->
     <string name="scanning">scanning for devices</string>
