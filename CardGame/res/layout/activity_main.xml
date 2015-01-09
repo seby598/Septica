@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/back"
-            android:onClick="imgBtn1Clicked" />
+            android:onClick="imgBtn1Clicked"/>
 
         <ImageButton
             android:id="@+id/card2"

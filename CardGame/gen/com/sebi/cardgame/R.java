@@ -69,12 +69,12 @@ public final class R {
         public static final int discoverable=0x7f080011;
         public static final int flagImgBtn=0x7f080005;
         public static final int linearLayout1=0x7f080000;
-        public static final int myCardImgBtn=0x7f080008;
+        public static final int myCardImgBtn=0x7f080007;
         public static final int new_devices=0x7f08000d;
-        public static final int opponentCardImgBtn=0x7f080009;
+        public static final int opponentCardImgBtn=0x7f080008;
         public static final int paired_devices=0x7f08000b;
         public static final int secure_connect_scan=0x7f080010;
-        public static final int textView1=0x7f080007;
+        public static final int textView1=0x7f080009;
         public static final int title_new_devices=0x7f08000c;
         public static final int title_paired_devices=0x7f08000a;
     }

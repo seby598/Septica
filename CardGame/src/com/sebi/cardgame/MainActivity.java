@@ -652,15 +652,7 @@ public class MainActivity extends Activity {
 				firstHand = true;
 				currentHandCards.clear();
 
-				ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
-				ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
-				ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
-				ImageButton card4ImgBtn = (ImageButton) findViewById(R.id.card4);
-
-				card1ImgBtn.setEnabled(true);
-				card2ImgBtn.setEnabled(true);
-				card3ImgBtn.setEnabled(true);
-				card4ImgBtn.setEnabled(true);
+				setCardButtonsEnabled(true);
 
 				ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 				myCard.setVisibility(View.INVISIBLE);
@@ -686,15 +678,7 @@ public class MainActivity extends Activity {
 					currentHandCards.clear();
 					firstHand = true;
 
-					ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
-					ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
-					ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
-					ImageButton card4ImgBtn = (ImageButton) findViewById(R.id.card4);
-
-					card1ImgBtn.setEnabled(true);
-					card2ImgBtn.setEnabled(true);
-					card3ImgBtn.setEnabled(true);
-					card4ImgBtn.setEnabled(true);
+					setCardButtonsEnabled(true);
 
 					ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 					myCard.setVisibility(View.INVISIBLE);
@@ -709,15 +693,8 @@ public class MainActivity extends Activity {
 					if (y == firstCardOfHand) {
 						Log.i(TAG, "x ii 7 si nu ii prima mana, iar y = prima carte");
 						Log.i(TAG, "Prima carte: " + firstCardOfHand);
-						ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
-						ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
-						ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
-						ImageButton card4ImgBtn = (ImageButton) findViewById(R.id.card4);
 
-						card1ImgBtn.setEnabled(true);
-						card2ImgBtn.setEnabled(true);
-						card3ImgBtn.setEnabled(true);
-						card4ImgBtn.setEnabled(true);
+						setCardButtonsEnabled(true);
 
 						ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
 						flagButton.setVisibility(View.VISIBLE);
@@ -733,15 +710,7 @@ public class MainActivity extends Activity {
 						currentHandCards.clear();
 						firstHand = true;
 
-						ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
-						ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
-						ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
-						ImageButton card4ImgBtn = (ImageButton) findViewById(R.id.card4);
-
-						card1ImgBtn.setEnabled(true);
-						card2ImgBtn.setEnabled(true);
-						card3ImgBtn.setEnabled(true);
-						card4ImgBtn.setEnabled(true);
+						setCardButtonsEnabled(true);
 
 						ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 						myCard.setVisibility(View.INVISIBLE);
@@ -758,15 +727,7 @@ public class MainActivity extends Activity {
 				Log.i(TAG, "y ii 7");
 				// trimite cartile la adversar
 
-				ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
-				ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
-				ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
-				ImageButton card4ImgBtn = (ImageButton) findViewById(R.id.card4);
-
-				card1ImgBtn.setEnabled(true);
-				card2ImgBtn.setEnabled(true);
-				card3ImgBtn.setEnabled(true);
-				card4ImgBtn.setEnabled(true);
+				setCardButtonsEnabled(true);
 
 				ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
 				flagButton.setVisibility(View.VISIBLE);
@@ -779,15 +740,8 @@ public class MainActivity extends Activity {
 			}
 		} else {
 			Log.i(TAG, "Cartile sunt egale");
-			ImageButton card1ImgBtn = (ImageButton) findViewById(R.id.card1);
-			ImageButton card2ImgBtn = (ImageButton) findViewById(R.id.card2);
-			ImageButton card3ImgBtn = (ImageButton) findViewById(R.id.card3);
-			ImageButton card4ImgBtn = (ImageButton) findViewById(R.id.card4);
-
-			card1ImgBtn.setEnabled(true);
-			card2ImgBtn.setEnabled(true);
-			card3ImgBtn.setEnabled(true);
-			card4ImgBtn.setEnabled(true);
+			
+			setCardButtonsEnabled(true);
 
 			firstHand = false;
 			
@@ -818,15 +772,7 @@ public class MainActivity extends Activity {
 		ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 		opponentCard.setVisibility(View.INVISIBLE);
 
-		ImageButton card1 = (ImageButton) findViewById(R.id.card1);
-		ImageButton card2 = (ImageButton) findViewById(R.id.card2);
-		ImageButton card3 = (ImageButton) findViewById(R.id.card3);
-		ImageButton card4 = (ImageButton) findViewById(R.id.card4);
-
-		card1.setEnabled(false);
-		card2.setEnabled(false);
-		card3.setEnabled(false);
-		card4.setEnabled(false);
+		setCardButtonsEnabled(false);
 		
 		decarteazaCarti();
 	}
@@ -969,6 +915,34 @@ public class MainActivity extends Activity {
 			}
 	}
 
+	private void setCardButtonsEnabled(boolean value)
+	{
+		ImageButton card1 = (ImageButton) findViewById(R.id.card1);
+		ImageButton card2 = (ImageButton) findViewById(R.id.card2);
+		ImageButton card3 = (ImageButton) findViewById(R.id.card3);
+		ImageButton card4 = (ImageButton) findViewById(R.id.card4);
+
+		card1.setEnabled(value);
+		card2.setEnabled(value);
+		card3.setEnabled(value);
+		card4.setEnabled(value);
+		
+		if(value == true)
+		{
+			card1.setAlpha(0.99f);
+			card2.setAlpha(0.99f);
+			card3.setAlpha(0.99f);
+			card4.setAlpha(0.99f);
+		}
+		else 
+		{
+			card1.setAlpha(0.5f);
+			card2.setAlpha(0.5f);
+			card3.setAlpha(0.5f);
+			card4.setAlpha(0.5f);
+		}
+	}
+	
 	public void imgBtn1Clicked(View view) {
 		
 		ImageButton firstImgBtn = (ImageButton) findViewById(R.id.myCardImgBtn);
@@ -993,16 +967,9 @@ public class MainActivity extends Activity {
 			mChatService.write(message.getBytes());
 			firstCardSW = false;
 
+			setCardButtonsEnabled(false);
+			
 			ImageButton card1 = (ImageButton) findViewById(R.id.card1);
-			ImageButton card2 = (ImageButton) findViewById(R.id.card2);
-			ImageButton card3 = (ImageButton) findViewById(R.id.card3);
-			ImageButton card4 = (ImageButton) findViewById(R.id.card4);
-
-			card1.setEnabled(false);
-			card2.setEnabled(false);
-			card3.setEnabled(false);
-			card4.setEnabled(false);
-
 			card1.setVisibility(View.INVISIBLE);
 			// card1.setImageDrawable(new ColorDrawable(0xFFFFFF));
 
@@ -1027,14 +994,8 @@ public class MainActivity extends Activity {
 			firstCardSW = true;
 
 			ImageButton card1 = (ImageButton) findViewById(R.id.card1);
-			ImageButton card2 = (ImageButton) findViewById(R.id.card2);
-			ImageButton card3 = (ImageButton) findViewById(R.id.card3);
-			ImageButton card4 = (ImageButton) findViewById(R.id.card4);
-
-			card1.setEnabled(false);
-			card2.setEnabled(false);
-			card3.setEnabled(false);
-			card4.setEnabled(false);
+			
+			setCardButtonsEnabled(false);
 
 			card1.setVisibility(View.INVISIBLE);
 			// card1.setImageDrawable(new ColorDrawable(0xFFFFFF));
@@ -1066,15 +1027,9 @@ public class MainActivity extends Activity {
 			mChatService.write(message.getBytes());
 			firstCardSW = false;
 
-			ImageButton card1 = (ImageButton) findViewById(R.id.card1);
 			ImageButton card2 = (ImageButton) findViewById(R.id.card2);
-			ImageButton card3 = (ImageButton) findViewById(R.id.card3);
-			ImageButton card4 = (ImageButton) findViewById(R.id.card4);
-
-			card1.setEnabled(false);
-			card2.setEnabled(false);
-			card3.setEnabled(false);
-			card4.setEnabled(false);
+			
+			setCardButtonsEnabled(false);
 
 			card2.setVisibility(View.INVISIBLE);
 			// card2.setImageDrawable(new ColorDrawable(0xFFFFFF));
@@ -1098,15 +1053,9 @@ public class MainActivity extends Activity {
 			mChatService.write(message.getBytes());
 			firstCardSW = true;
 
-			ImageButton card1 = (ImageButton) findViewById(R.id.card1);
 			ImageButton card2 = (ImageButton) findViewById(R.id.card2);
-			ImageButton card3 = (ImageButton) findViewById(R.id.card3);
-			ImageButton card4 = (ImageButton) findViewById(R.id.card4);
-
-			card1.setEnabled(false);
-			card2.setEnabled(false);
-			card3.setEnabled(false);
-			card4.setEnabled(false);
+			
+			setCardButtonsEnabled(false);
 
 			card2.setVisibility(View.INVISIBLE);
 			// card2.setImageDrawable(new ColorDrawable(0xFFFFFF));
@@ -1136,15 +1085,9 @@ public class MainActivity extends Activity {
 			mChatService.write(message.getBytes());
 			firstCardSW = false;
 
-			ImageButton card1 = (ImageButton) findViewById(R.id.card1);
-			ImageButton card2 = (ImageButton) findViewById(R.id.card2);
 			ImageButton card3 = (ImageButton) findViewById(R.id.card3);
-			ImageButton card4 = (ImageButton) findViewById(R.id.card4);
-
-			card1.setEnabled(false);
-			card2.setEnabled(false);
-			card3.setEnabled(false);
-			card4.setEnabled(false);
+			
+			setCardButtonsEnabled(false);
 
 			card3.setVisibility(View.INVISIBLE);
 			// card3.setImageDrawable(new ColorDrawable(0xFFFFFF));
@@ -1167,15 +1110,9 @@ public class MainActivity extends Activity {
 			mChatService.write(message.getBytes());
 			firstCardSW = true;
 
-			ImageButton card1 = (ImageButton) findViewById(R.id.card1);
-			ImageButton card2 = (ImageButton) findViewById(R.id.card2);
 			ImageButton card3 = (ImageButton) findViewById(R.id.card3);
-			ImageButton card4 = (ImageButton) findViewById(R.id.card4);
 
-			card1.setEnabled(false);
-			card2.setEnabled(false);
-			card3.setEnabled(false);
-			card4.setEnabled(false);
+			setCardButtonsEnabled(false);
 
 			card3.setVisibility(View.INVISIBLE);
 			// card3.setImageDrawable(new ColorDrawable(0xFFFFFF));
@@ -1205,15 +1142,9 @@ public class MainActivity extends Activity {
 			mChatService.write(message.getBytes());
 			firstCardSW = false;
 
-			ImageButton card1 = (ImageButton) findViewById(R.id.card1);
-			ImageButton card2 = (ImageButton) findViewById(R.id.card2);
-			ImageButton card3 = (ImageButton) findViewById(R.id.card3);
 			ImageButton card4 = (ImageButton) findViewById(R.id.card4);
 
-			card1.setEnabled(false);
-			card2.setEnabled(false);
-			card3.setEnabled(false);
-			card4.setEnabled(false);
+			setCardButtonsEnabled(false);
 
 			card4.setVisibility(View.INVISIBLE);
 			// card4.setImageDrawable(new ColorDrawable(0xFFFFFF));
@@ -1235,15 +1166,9 @@ public class MainActivity extends Activity {
 			mChatService.write(message.getBytes());
 			firstCardSW = true;
 
-			ImageButton card1 = (ImageButton) findViewById(R.id.card1);
-			ImageButton card2 = (ImageButton) findViewById(R.id.card2);
-			ImageButton card3 = (ImageButton) findViewById(R.id.card3);
 			ImageButton card4 = (ImageButton) findViewById(R.id.card4);
 
-			card1.setEnabled(false);
-			card2.setEnabled(false);
-			card3.setEnabled(false);
-			card4.setEnabled(false);
+			setCardButtonsEnabled(false);
 
 			card4.setVisibility(View.INVISIBLE);
 			// card4.setImageDrawable(new ColorDrawable(0xFFFFFF));
