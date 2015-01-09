@@ -1,0 +1,91 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.sebi.cardgame.MainActivity" >
+
+    <ImageButton
+        android:id="@+id/myCardImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_marginLeft="27dp"
+        android:layout_toRightOf="@+id/deckImgBtn"
+        android:background="#FFFFFF" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/deckImgBtn"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:visibility="invisible" >
+
+        <ImageButton
+            android:id="@+id/card1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="imgBtn1Clicked"
+            android:src="@drawable/back" />
+
+        <ImageButton
+            android:id="@+id/card2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="imgBtn2Clicked"
+            android:src="@drawable/back" />
+
+        <ImageButton
+            android:id="@+id/card3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="imgBtn3Clicked"
+            android:src="@drawable/back" />
+
+        <ImageButton
+            android:id="@+id/card4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="imgBtn4Clicked"
+            android:src="@drawable/back" />
+
+        <ImageButton
+            android:id="@+id/flagImgBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="#FFFFFF"
+            android:onClick="flagBtnClicked" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/deckImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:onClick="deckCLicked"
+        android:src="@drawable/back" />
+
+    <ImageButton
+        android:id="@+id/opponentCardImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/myCardImgBtn"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/deckImgBtn"
+        android:layout_toRightOf="@+id/linearLayout1"
+        android:text="@string/my_score" />
+
+</RelativeLayout>
