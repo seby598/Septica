@@ -2,17 +2,14 @@ package com.sebi.cardgame;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import android.R.integer;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -21,13 +18,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 public class MainActivity extends Activity {
 
@@ -875,6 +869,21 @@ public class MainActivity extends Activity {
 	}
 
 	private boolean checkMatchingCards() {
+		if(usedCardsCounter == 30 || usedCardsCounter == 31)
+			{
+				ImageButton deckImgBtn = (ImageButton) findViewById(R.id.deckImgBtn);
+				deckImgBtn.setEnabled(true);
+				gameStarted = false;
+				usedCardsCounter = 6;
+				firstCardSW = true;
+				myHand = false;
+				firstHand = true;
+				takenCards.clear();
+				dealtCards.clear();
+				return false;
+			}
+			
+		
 		int c1 = 0, c2 = 0, c3 = 0, c4 = 0;
 		if (card1 != -1)
 			c1 = Integer.valueOf(cardsArrayList.get(card1).substring(3));
