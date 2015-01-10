@@ -405,7 +405,8 @@ public class MainActivity extends Activity {
 			case MESSAGE_WRITE:
 				updateScore();
 				if (gameStarted == false) {
-
+					ImageButton deckImgBtn = (ImageButton) findViewById(R.id.deckImgBtn);
+					deckImgBtn.setEnabled(false);
 					Log.i(TAG, "MESSAGE_STATE_CHANGE: " + msg.arg1);
 					ImageButton imgBtn1 = (ImageButton) findViewById(R.id.card1);
 					ImageButton imgBtn2 = (ImageButton) findViewById(R.id.card2);
@@ -504,7 +505,8 @@ public class MainActivity extends Activity {
 
 				if (gameStarted == false) {
 					Log.i(TAG, "Cartile: " + readMessage);
-
+					ImageButton deckImgBtn = (ImageButton) findViewById(R.id.deckImgBtn);
+					deckImgBtn.setEnabled(false);
 					obtainDealtCards(readMessage);
 
 					ImageButton imageBtn1 = (ImageButton) findViewById(R.id.card1);
@@ -588,7 +590,7 @@ public class MainActivity extends Activity {
 					    	    	 compare(firstCard, secondCard);
 					    	    }
 					    	});
-					        // this code will be executed after 2 seconds       
+					        // this code will be executed after 0.5 seconds       
 					    }
 					}, 500);
 					
@@ -681,7 +683,7 @@ public class MainActivity extends Activity {
 						Log.i(TAG, "x ii 7 si nu ii prima mana, iar y = prima carte");
 						Log.i(TAG, "Prima carte: " + firstCardOfHand);
 
-						if(checkPlayerCards() == true)
+						if(checkMatchingCards() == true)
 						{
 						setCardButtonsEnabled(true);
 
@@ -742,13 +744,13 @@ public class MainActivity extends Activity {
 				Log.i(TAG, "y ii 7");
 				// trimite cartile la adversar
 
-				if(checkPlayerCards() == true)
+				if(checkMatchingCards() == true)
 				{
 				setCardButtonsEnabled(true);
 
 				firstHand = false;
 				
-				
+				disableUnmatchingCards();
 				
 				ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
 				flagButton.setVisibility(View.VISIBLE);
@@ -784,7 +786,7 @@ public class MainActivity extends Activity {
 		} else {
 			Log.i(TAG, "Cartile sunt egale");
 			
-			if(checkPlayerCards() == true)
+			if(checkMatchingCards() == true)
 			{
 			setCardButtonsEnabled(true);
 
@@ -826,21 +828,48 @@ public class MainActivity extends Activity {
 
 	}
 
-	private boolean checkPlayerCards() {
+	private void disableUnmatchingCards() {
+		int c1=0,c2=0,c3=0,c4=0;
+		ImageButton cardBtn1 = (ImageButton) findViewById(R.id.card1);
+		ImageButton cardBtn2 = (ImageButton) findViewById(R.id.card2);
+		ImageButton cardBtn3 = (ImageButton) findViewById(R.id.card3);
+		ImageButton cardBtn4 = (ImageButton) findViewById(R.id.card4);
+		
+		if(card1 != -1)
+			c1 = Integer.valueOf(cardsArrayList.get(card1).substring(3));
+		if(card2 != -1)
+			c2 = Integer.valueOf(cardsArrayList.get(card2).substring(3));
+		if(card3 != -1)
+			c3 = Integer.valueOf(cardsArrayList.get(card3).substring(3));
+		if(card4 != -1)
+			c4 = Integer.valueOf(cardsArrayList.get(card4).substring(3));
+		
+		if(c1 != 7 && c1 != firstCardOfHand)
+			cardBtn1.setEnabled(false);
+		if(c2 != 7 && c2 != firstCardOfHand)
+			cardBtn2.setEnabled(false);
+		if(c3 != 7 && c3 != firstCardOfHand)
+			cardBtn3.setEnabled(false);
+		if(c4 != 7 && c4 != firstCardOfHand)
+			cardBtn4.setEnabled(false);
+	}
+
+	private boolean checkMatchingCards() {
 		int c1=0,c2=0,c3=0,c4=0;
 		if(card1 != -1)
 			c1 = Integer.valueOf(cardsArrayList.get(card1).substring(3));
-		if(card1 != -1)
+		if(card2 != -1)
 			c2 = Integer.valueOf(cardsArrayList.get(card2).substring(3));
-		if(card1 != -1)
+		if(card3 != -1)
 			c3 = Integer.valueOf(cardsArrayList.get(card3).substring(3));
-		if(card1 != -1)
+		if(card4 != -1)
 			c4 = Integer.valueOf(cardsArrayList.get(card4).substring(3));
-		
-		if(c1 != 7 || c2 != 7 || c3 != 7 || c4 != 7 || c1 != firstCardOfHand || c2 != firstCardOfHand || c3 != firstCardOfHand || c4 != firstCardOfHand)
-			return false;
-		else
+		Log.i(TAG, "First card of the hand: " + firstCardOfHand);
+		Log.i(TAG, "Cards to check: " + c1 + " " + c2 + " " + c3 + " " + c4 + " ");
+		if(c1 == 7 || c2 == 7 || c3 == 7 || c4 == 7 || c1 == firstCardOfHand || c2 == firstCardOfHand || c3 == firstCardOfHand || c4 == firstCardOfHand)
 			return true;
+		else
+			return false;
 	}
 
 	public void flagBtnClicked(View view) {
