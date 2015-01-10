@@ -697,6 +697,8 @@ public class MainActivity extends Activity {
 							setCardButtonsEnabled(true);
 
 							firstHand = false;
+							
+							disableUnmatchingCards();
 
 							ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
 							flagButton.setVisibility(View.VISIBLE);
@@ -795,6 +797,8 @@ public class MainActivity extends Activity {
 
 				firstHand = false;
 
+				disableUnmatchingCards();
+				
 				ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
 				flagButton.setVisibility(View.VISIBLE);
 				flagButton.setImageResource(R.drawable.whiteflag);
@@ -845,18 +849,26 @@ public class MainActivity extends Activity {
 		if (c1 != 7 && c1 != firstCardOfHand) {
 			cardBtn1.setEnabled(false);
 			cardBtn1.setAlpha(0.5f);
+			cardBtn1.requestLayout();
+			cardBtn1.invalidate();
 		}
 		if (c2 != 7 && c2 != firstCardOfHand) {
 			cardBtn2.setEnabled(false);
 			cardBtn2.setAlpha(0.5f);
+			cardBtn2.requestLayout();
+			cardBtn2.invalidate();
 		}
 		if (c3 != 7 && c3 != firstCardOfHand) {
 			cardBtn3.setEnabled(false);
 			cardBtn3.setAlpha(0.5f);
+			cardBtn3.requestLayout();
+			cardBtn3.invalidate();
 		}
 		if (c4 != 7 && c4 != firstCardOfHand) {
 			cardBtn4.setEnabled(false);
 			cardBtn4.setAlpha(0.5f);
+			cardBtn4.requestLayout();
+			cardBtn4.invalidate();
 		}
 	}
 
