@@ -352,10 +352,7 @@ public class MainActivity extends Activity {
             break;
 
 		}
-		/*
-		 * case REQUEST_CONNECT_DEVICE_INSECURE: // When DeviceListActivity
-		 * returns with a device to connect if (resultCode ==
-		 * Activity.RESULT_OK) { connectDevice(data, false); } break; case
+		/*case
 		 * REQUEST_ENABLE_BT: // When the request to enable Bluetooth returns if
 		 * (resultCode == Activity.RESULT_OK) { // Bluetooth is now enabled, so
 		 * set up a chat session setupChat(); } else { // User did not enable
