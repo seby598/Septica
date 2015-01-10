@@ -151,6 +151,8 @@ public class MainActivity extends Activity {
 		}
 		
 		setCardButtonsEnabled(false);
+		ImageButton deckImgBtn = (ImageButton) findViewById(R.id.deckImgBtn);
+		deckImgBtn.setEnabled(false);
 	}
 
 	@Override
@@ -389,6 +391,8 @@ public class MainActivity extends Activity {
 					setStatus(getString(R.string.title_connected_to));
 					LinearLayout lLayout = (LinearLayout) findViewById(R.id.linearLayout1);
 					lLayout.setVisibility(View.VISIBLE);
+					ImageButton deckImgBtn = (ImageButton) findViewById(R.id.deckImgBtn);
+					deckImgBtn.setEnabled(true);
 					break;
 				case BluetoothChatService.STATE_CONNECTING:
 					setStatus(R.string.title_connecting);
