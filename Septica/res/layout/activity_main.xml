@@ -30,6 +30,8 @@
             android:id="@+id/card1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="#FFFFFF"
             android:onClick="imgBtn1Clicked"
             android:src="@drawable/back" />
@@ -38,6 +40,8 @@
             android:id="@+id/card2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="#FFFFFF"
             android:onClick="imgBtn2Clicked"
             android:src="@drawable/back" />
@@ -46,6 +50,9 @@
             android:id="@+id/card3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="#FFFFFF"
             android:onClick="imgBtn3Clicked"
             android:src="@drawable/back" />
@@ -54,6 +61,8 @@
             android:id="@+id/card4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="#FFFFFF"
             android:onClick="imgBtn4Clicked"
             android:src="@drawable/back" />
@@ -62,9 +71,12 @@
             android:id="@+id/flagImgBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
             android:background="#FFFFFF"
             android:onClick="flagBtnClicked" />
+
     </LinearLayout>
 
     <ImageButton
@@ -91,8 +103,8 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/deckImgBtn"
-        android:layout_toRightOf="@+id/linearLayout1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:text="@string/my_score" />
 
 </RelativeLayout>
