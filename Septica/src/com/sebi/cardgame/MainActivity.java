@@ -85,7 +85,6 @@ public class MainActivity extends Activity {
 	private int secondCard;
 	private int firstCardOfHand;
 	private int usedCardsCounter = 6;
-	private int player;
 
 	private boolean gameStarted = false;
 	private boolean firstCardSW = true;
@@ -431,7 +430,6 @@ public class MainActivity extends Activity {
 							.getCardDrawable(cardsArrayList.get(dealtCards
 									.get(3))));
 					gameStarted = true;
-					player = 1;
 				}
 				break;
 			case MESSAGE_READ:
@@ -487,6 +485,8 @@ public class MainActivity extends Activity {
 						myCard.setVisibility(View.INVISIBLE);
 						ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 						opponentCard.setVisibility(View.INVISIBLE);
+						
+						decarteazaCarti();
 
 					} else if (readMessage.substring(0, 9).equals("hideCards")) {
 						decarteazaCarti();
@@ -531,7 +531,7 @@ public class MainActivity extends Activity {
 									.get(7))));
 
 					gameStarted = true;
-					player = 2;
+					usedCardsCounter++;
 
 					break;
 				} else if (firstCardSW == true) {
@@ -769,9 +769,6 @@ public class MainActivity extends Activity {
 		
 		int numberOfCardsLeft = (32 - usedCardsCounter) / 2;
 		int totalCardsTaken = 0;
-
-		if(player == 2)
-			usedCardsCounter++;
 		
 		if (numberOfCardsLeft > 0)
 			if (card1 == -1) {
