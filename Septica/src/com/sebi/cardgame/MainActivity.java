@@ -180,10 +180,11 @@ public class MainActivity extends Activity {
 			startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE_SECURE);
 			return true;
 		case R.id.insecure_connect_scan:
-            // Launch the DeviceListActivity to see devices and do scan
-            serverIntent = new Intent(this, DeviceListActivity.class);
-            startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE_INSECURE);
-            return true;
+			// Launch the DeviceListActivity to see devices and do scan
+			serverIntent = new Intent(this, DeviceListActivity.class);
+			startActivityForResult(serverIntent,
+					REQUEST_CONNECT_DEVICE_INSECURE);
+			return true;
 		case R.id.discoverable:
 			// Ensure this device is discoverable by others
 			ensureDiscoverable();
@@ -348,22 +349,23 @@ public class MainActivity extends Activity {
 				connectDevice(data, true);
 			}
 			break;
-			
+
 		case REQUEST_CONNECT_DEVICE_INSECURE:
-            // When DeviceListActivity returns with a device to connect
-            if (resultCode == Activity.RESULT_OK) {
-                connectDevice(data, false);
-            }
-            break;
+			// When DeviceListActivity returns with a device to connect
+			if (resultCode == Activity.RESULT_OK) {
+				connectDevice(data, false);
+			}
+			break;
 
 		}
-		/*case
-		 * REQUEST_ENABLE_BT: // When the request to enable Bluetooth returns if
-		 * (resultCode == Activity.RESULT_OK) { // Bluetooth is now enabled, so
-		 * set up a chat session setupChat(); } else { // User did not enable
-		 * Bluetooth or an error occurred Log.d(TAG, "BT not enabled");
-		 * Toast.makeText(this, R.string.bt_not_enabled_leaving,
-		 * Toast.LENGTH_SHORT).show(); finish(); }
+		/*
+		 * case REQUEST_ENABLE_BT: // When the request to enable Bluetooth
+		 * returns if (resultCode == Activity.RESULT_OK) { // Bluetooth is now
+		 * enabled, so set up a chat session setupChat(); } else { // User did
+		 * not enable Bluetooth or an error occurred Log.d(TAG,
+		 * "BT not enabled"); Toast.makeText(this,
+		 * R.string.bt_not_enabled_leaving, Toast.LENGTH_SHORT).show();
+		 * finish(); }
 		 */
 	}
 
@@ -447,9 +449,11 @@ public class MainActivity extends Activity {
 												// mine
 					Log.i(TAG, "Mesajul cu @: " + readMessage);
 					if (readMessage.substring(0, 8).equals("yourHand")) {
-						if(readMessage.contains("takeCards"))
-						{							
-							String[] handCards = (readMessage.substring((readMessage.indexOf("@") + 1), readMessage.indexOf("takeCards"))).split("@");
+						if (readMessage.contains("takeCards")) {
+							String[] handCards = (readMessage.substring(
+									(readMessage.indexOf("@") + 1),
+									readMessage.indexOf("takeCards")))
+									.split("@");
 							for (int i = 0; i < handCards.length; i++)
 								Log.i(TAG, "Hand Cards: " + handCards[i]);
 
@@ -457,16 +461,21 @@ public class MainActivity extends Activity {
 								takenCards.add(Integer.valueOf(handCards[i]));
 
 							for (int i = 0; i < takenCards.size(); i++)
-								Log.i(TAG, "Eu am cartile: " + takenCards.get(i));
+								Log.i(TAG,
+										"Eu am cartile: " + takenCards.get(i));
 							firstHand = true;
-							
-							decarteazaUnNumarDeCarti(readMessage.substring(readMessage.indexOf("takeCards") + 10,readMessage.lastIndexOf("@")),
-									readMessage.substring(readMessage.lastIndexOf("@") + 1));
-						}
-						else
-							
+
+							decarteazaUnNumarDeCarti(readMessage.substring(
+									readMessage.indexOf("takeCards") + 10,
+									readMessage.lastIndexOf("@")),
+									readMessage.substring(readMessage
+											.lastIndexOf("@") + 1));
+						} else
+
 						{
-							String[] handCards = (readMessage.substring((readMessage.indexOf("@") + 1))).split("@");
+							String[] handCards = (readMessage
+									.substring((readMessage.indexOf("@") + 1)))
+									.split("@");
 							for (int i = 0; i < handCards.length; i++)
 								Log.i(TAG, "Hand Cards: " + handCards[i]);
 
@@ -474,10 +483,10 @@ public class MainActivity extends Activity {
 								takenCards.add(Integer.valueOf(handCards[i]));
 
 							for (int i = 0; i < takenCards.size(); i++)
-								Log.i(TAG, "Eu am cartile: " + takenCards.get(i));
+								Log.i(TAG,
+										"Eu am cartile: " + takenCards.get(i));
 							firstHand = true;
-							
-							
+
 						}
 
 						setCardButtonsEnabled(true);
@@ -486,7 +495,7 @@ public class MainActivity extends Activity {
 						myCard.setVisibility(View.INVISIBLE);
 						ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 						opponentCard.setVisibility(View.INVISIBLE);
-						
+
 						decarteazaCarti();
 
 					} else if (readMessage.substring(0, 9).equals("hideCards")) {
@@ -556,7 +565,7 @@ public class MainActivity extends Activity {
 									.valueOf(readMessage))));
 
 					firstCardSW = false;
-					
+
 					break;
 				} else {// firstCard == false
 
@@ -577,24 +586,24 @@ public class MainActivity extends Activity {
 									.valueOf(readMessage))));
 
 					firstCardSW = true;
-					
-					new Timer().schedule(new TimerTask() {     
-						
-					    @Override
-					    public void run() {
-					    	runOnUiThread(new Runnable() {
-					    	     @Override
-					    	     public void run() {
 
-					    	//stuff that updates ui
-					    	    	 compare(firstCard, secondCard);
-					    	    }
-					    	});
-					        // this code will be executed after 0.5 seconds       
-					    }
+					new Timer().schedule(new TimerTask() {
+
+						@Override
+						public void run() {
+							runOnUiThread(new Runnable() {
+								@Override
+								public void run() {
+
+									// stuff that updates ui
+									compare(firstCard, secondCard);
+								}
+							});
+							// this code will be executed after 0.5 seconds
+						}
 					}, 500);
-					
-					//compare(firstCard, secondCard);
+
+					// compare(firstCard, secondCard);
 
 					break;
 				}
@@ -612,16 +621,15 @@ public class MainActivity extends Activity {
 		}
 	};
 
-	private void updateScore()
-	{
+	private void updateScore() {
 		TextView scoreTextView = (TextView) findViewById(R.id.textView1);
 		int x = 0;
-		for(int i=0; i<takenCards.size(); i++)
-			if(takenCards.get(i)>9)
+		for (int i = 0; i < takenCards.size(); i++)
+			if (takenCards.get(i) > 9)
 				x++;
 		scoreTextView.setText("My score: " + x);
 	}
-	
+
 	private void compare(int firstCard, int secondCard) {
 		int x = Integer.valueOf(cardsArrayList.get(firstCard).substring(3));
 		int y = Integer.valueOf(cardsArrayList.get(secondCard).substring(3));
@@ -646,7 +654,8 @@ public class MainActivity extends Activity {
 				ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 				myCard.setVisibility(View.INVISIBLE);
 				ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
-				opponentCard.setVisibility(View.INVISIBLE);;
+				opponentCard.setVisibility(View.INVISIBLE);
+				;
 
 				String message = "hideCards@";
 				mChatService.write(message.getBytes());
@@ -680,27 +689,24 @@ public class MainActivity extends Activity {
 					decarteazaCarti();
 				} else {
 					if (y == firstCardOfHand) {
-						Log.i(TAG, "x ii 7 si nu ii prima mana, iar y = prima carte");
+						Log.i(TAG,
+								"x ii 7 si nu ii prima mana, iar y = prima carte");
 						Log.i(TAG, "Prima carte: " + firstCardOfHand);
 
-						if(checkMatchingCards() == true)
-						{
-						setCardButtonsEnabled(true);
+						if (checkMatchingCards() == true) {
+							setCardButtonsEnabled(true);
 
-						firstHand = false;
-						
-						
-						
-						ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
-						flagButton.setVisibility(View.VISIBLE);
-						flagButton.setImageResource(R.drawable.whiteflag);
-						}
-						else
-						{
+							firstHand = false;
+
+							ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
+							flagButton.setVisibility(View.VISIBLE);
+							flagButton.setImageResource(R.drawable.whiteflag);
+						} else {
 							String message = "yourHand";
 
 							for (int i = 0; i < currentHandCards.size(); i++)
-								message = message + "@" + currentHandCards.get(i);
+								message = message + "@"
+										+ currentHandCards.get(i);
 
 							currentHandCards.clear();
 							mChatService.write(message.getBytes());
@@ -714,12 +720,13 @@ public class MainActivity extends Activity {
 							opponentCard.setVisibility(View.INVISIBLE);
 
 							setCardButtonsEnabled(false);
-							
+
 							decarteazaCarti();
 						}
 					} else {
 						// takeCards
-						Log.i(TAG, "x ii 7 si nu ii prima mana, iar y != prima carte");
+						Log.i(TAG,
+								"x ii 7 si nu ii prima mana, iar y != prima carte");
 						Log.i(TAG, "Prima carte: " + firstCardOfHand);
 						takenCards.addAll(currentHandCards);
 						for (int i = 0; i < takenCards.size(); i++)
@@ -744,20 +751,17 @@ public class MainActivity extends Activity {
 				Log.i(TAG, "y ii 7");
 				// trimite cartile la adversar
 
-				if(checkMatchingCards() == true)
-				{
-				setCardButtonsEnabled(true);
+				if (checkMatchingCards() == true) {
+					setCardButtonsEnabled(true);
 
-				firstHand = false;
-				
-				disableUnmatchingCards();
-				
-				ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
-				flagButton.setVisibility(View.VISIBLE);
-				flagButton.setImageResource(R.drawable.whiteflag);
-				}
-				else
-				{
+					firstHand = false;
+
+					disableUnmatchingCards();
+
+					ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
+					flagButton.setVisibility(View.VISIBLE);
+					flagButton.setImageResource(R.drawable.whiteflag);
+				} else {
 					String message = "yourHand";
 
 					for (int i = 0; i < currentHandCards.size(); i++)
@@ -775,7 +779,7 @@ public class MainActivity extends Activity {
 					opponentCard.setVisibility(View.INVISIBLE);
 
 					setCardButtonsEnabled(false);
-					
+
 					decarteazaCarti();
 				}
 
@@ -785,21 +789,16 @@ public class MainActivity extends Activity {
 			}
 		} else {
 			Log.i(TAG, "Cartile sunt egale");
-			
-			if(checkMatchingCards() == true)
-			{
-			setCardButtonsEnabled(true);
 
-			firstHand = false;
-			
-			
-			
-			ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
-			flagButton.setVisibility(View.VISIBLE);
-			flagButton.setImageResource(R.drawable.whiteflag);
-			}
-			else
-			{
+			if (checkMatchingCards() == true) {
+				setCardButtonsEnabled(true);
+
+				firstHand = false;
+
+				ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
+				flagButton.setVisibility(View.VISIBLE);
+				flagButton.setImageResource(R.drawable.whiteflag);
+			} else {
 				String message = "yourHand";
 
 				for (int i = 0; i < currentHandCards.size(); i++)
@@ -817,11 +816,10 @@ public class MainActivity extends Activity {
 				opponentCard.setVisibility(View.INVISIBLE);
 
 				setCardButtonsEnabled(false);
-				
+
 				decarteazaCarti();
 			}
-				
-				
+
 			for (int i = 0; i < takenCards.size(); i++)
 				Log.i(TAG, "Eu am cartile: " + takenCards.get(i));
 		}
@@ -829,44 +827,55 @@ public class MainActivity extends Activity {
 	}
 
 	private void disableUnmatchingCards() {
-		int c1=0,c2=0,c3=0,c4=0;
+		int c1 = 0, c2 = 0, c3 = 0, c4 = 0;
 		ImageButton cardBtn1 = (ImageButton) findViewById(R.id.card1);
 		ImageButton cardBtn2 = (ImageButton) findViewById(R.id.card2);
 		ImageButton cardBtn3 = (ImageButton) findViewById(R.id.card3);
 		ImageButton cardBtn4 = (ImageButton) findViewById(R.id.card4);
-		
-		if(card1 != -1)
+
+		if (card1 != -1)
 			c1 = Integer.valueOf(cardsArrayList.get(card1).substring(3));
-		if(card2 != -1)
+		if (card2 != -1)
 			c2 = Integer.valueOf(cardsArrayList.get(card2).substring(3));
-		if(card3 != -1)
+		if (card3 != -1)
 			c3 = Integer.valueOf(cardsArrayList.get(card3).substring(3));
-		if(card4 != -1)
+		if (card4 != -1)
 			c4 = Integer.valueOf(cardsArrayList.get(card4).substring(3));
-		
-		if(c1 != 7 && c1 != firstCardOfHand)
+
+		if (c1 != 7 && c1 != firstCardOfHand) {
 			cardBtn1.setEnabled(false);
-		if(c2 != 7 && c2 != firstCardOfHand)
+			cardBtn1.setAlpha(0.5f);
+		}
+		if (c2 != 7 && c2 != firstCardOfHand) {
 			cardBtn2.setEnabled(false);
-		if(c3 != 7 && c3 != firstCardOfHand)
+			cardBtn2.setAlpha(0.5f);
+		}
+		if (c3 != 7 && c3 != firstCardOfHand) {
 			cardBtn3.setEnabled(false);
-		if(c4 != 7 && c4 != firstCardOfHand)
+			cardBtn3.setAlpha(0.5f);
+		}
+		if (c4 != 7 && c4 != firstCardOfHand) {
 			cardBtn4.setEnabled(false);
+			cardBtn4.setAlpha(0.5f);
+		}
 	}
 
 	private boolean checkMatchingCards() {
-		int c1=0,c2=0,c3=0,c4=0;
-		if(card1 != -1)
+		int c1 = 0, c2 = 0, c3 = 0, c4 = 0;
+		if (card1 != -1)
 			c1 = Integer.valueOf(cardsArrayList.get(card1).substring(3));
-		if(card2 != -1)
+		if (card2 != -1)
 			c2 = Integer.valueOf(cardsArrayList.get(card2).substring(3));
-		if(card3 != -1)
+		if (card3 != -1)
 			c3 = Integer.valueOf(cardsArrayList.get(card3).substring(3));
-		if(card4 != -1)
+		if (card4 != -1)
 			c4 = Integer.valueOf(cardsArrayList.get(card4).substring(3));
 		Log.i(TAG, "First card of the hand: " + firstCardOfHand);
-		Log.i(TAG, "Cards to check: " + c1 + " " + c2 + " " + c3 + " " + c4 + " ");
-		if(c1 == 7 || c2 == 7 || c3 == 7 || c4 == 7 || c1 == firstCardOfHand || c2 == firstCardOfHand || c3 == firstCardOfHand || c4 == firstCardOfHand)
+		Log.i(TAG, "Cards to check: " + c1 + " " + c2 + " " + c3 + " " + c4
+				+ " ");
+		if (c1 == 7 || c2 == 7 || c3 == 7 || c4 == 7 || c1 == firstCardOfHand
+				|| c2 == firstCardOfHand || c3 == firstCardOfHand
+				|| c4 == firstCardOfHand)
 			return true;
 		else
 			return false;
@@ -890,25 +899,25 @@ public class MainActivity extends Activity {
 		opponentCard.setVisibility(View.INVISIBLE);
 
 		setCardButtonsEnabled(false);
-		
+
 		decarteazaCarti();
 	}
 
 	private void decarteazaCarti() {
-		
-		
+
 		int numberOfCardsLeft = (31 - usedCardsCounter) / 2;
 		int totalCardsTaken = 0;
-		
+
 		if (numberOfCardsLeft > 0)
 			if (card1 == -1) {
 
 				usedCardsCounter = usedCardsCounter + 2;
 				card1 = dealtCards.get(usedCardsCounter);
 				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card1);
-				/*Toast.makeText(this,
-						"Iau cartea nr " + usedCardsCounter + " : " + card1,
-						Toast.LENGTH_LONG).show();*/
+				/*
+				 * Toast.makeText(this, "Iau cartea nr " + usedCardsCounter +
+				 * " : " + card1, Toast.LENGTH_LONG).show();
+				 */
 				ImageButton cardImgBtn1 = (ImageButton) findViewById(R.id.card1);
 				cardImgBtn1.setVisibility(View.VISIBLE);
 				cardImgBtn1.setImageResource(MainActivity
@@ -921,9 +930,10 @@ public class MainActivity extends Activity {
 				usedCardsCounter = usedCardsCounter + 2;
 				card2 = dealtCards.get(usedCardsCounter);
 				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card2);
-				/*Toast.makeText(this,
-						"Iau cartea nr " + usedCardsCounter + " : " + card2,
-						Toast.LENGTH_LONG).show();*/
+				/*
+				 * Toast.makeText(this, "Iau cartea nr " + usedCardsCounter +
+				 * " : " + card2, Toast.LENGTH_LONG).show();
+				 */
 				ImageButton cardImgBtn2 = (ImageButton) findViewById(R.id.card2);
 				cardImgBtn2.setVisibility(View.VISIBLE);
 				cardImgBtn2.setImageResource(MainActivity
@@ -936,9 +946,10 @@ public class MainActivity extends Activity {
 				usedCardsCounter = usedCardsCounter + 2;
 				card3 = dealtCards.get(usedCardsCounter);
 				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card3);
-				/*Toast.makeText(this,
-						"Iau cartea nr " + usedCardsCounter + " : " + card3,
-						Toast.LENGTH_LONG).show();*/
+				/*
+				 * Toast.makeText(this, "Iau cartea nr " + usedCardsCounter +
+				 * " : " + card3, Toast.LENGTH_LONG).show();
+				 */
 				ImageButton cardImgBtn3 = (ImageButton) findViewById(R.id.card3);
 				cardImgBtn3.setVisibility(View.VISIBLE);
 				cardImgBtn3.setImageResource(MainActivity
@@ -951,9 +962,10 @@ public class MainActivity extends Activity {
 				usedCardsCounter = usedCardsCounter + 2;
 				card4 = dealtCards.get(usedCardsCounter);
 				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card4);
-				/*Toast.makeText(this,
-						"Iau cartea nr " + usedCardsCounter + " : " + card4,
-						Toast.LENGTH_LONG).show();*/
+				/*
+				 * Toast.makeText(this, "Iau cartea nr " + usedCardsCounter +
+				 * " : " + card4, Toast.LENGTH_LONG).show();
+				 */
 				ImageButton cardImgBtn4 = (ImageButton) findViewById(R.id.card4);
 				cardImgBtn4.setVisibility(View.VISIBLE);
 				cardImgBtn4.setImageResource(MainActivity
@@ -962,16 +974,17 @@ public class MainActivity extends Activity {
 				totalCardsTaken++;
 			}
 
-		
-		/*String message = "takeCards@";
-		
-		message = message + totalCardsTaken + "@" + usedCardsCounter;
-		
-		Log.i(TAG, "Mesajul trimis din decarteazaCarti: " + message);
-		mChatService.write(message.getBytes());*/
-		
-		//usedCardsCounter = usedCardsCounter + totalCardsTaken;
-		
+		/*
+		 * String message = "takeCards@";
+		 * 
+		 * message = message + totalCardsTaken + "@" + usedCardsCounter;
+		 * 
+		 * Log.i(TAG, "Mesajul trimis din decarteazaCarti: " + message);
+		 * mChatService.write(message.getBytes());
+		 */
+
+		// usedCardsCounter = usedCardsCounter + totalCardsTaken;
+
 	}
 
 	private void decarteazaUnNumarDeCarti(String substring, String counter) {
@@ -1036,8 +1049,7 @@ public class MainActivity extends Activity {
 			}
 	}
 
-	private void setCardButtonsEnabled(boolean value)
-	{
+	private void setCardButtonsEnabled(boolean value) {
 		ImageButton card1 = (ImageButton) findViewById(R.id.card1);
 		ImageButton card2 = (ImageButton) findViewById(R.id.card2);
 		ImageButton card3 = (ImageButton) findViewById(R.id.card3);
@@ -1047,22 +1059,19 @@ public class MainActivity extends Activity {
 		card2.setEnabled(value);
 		card3.setEnabled(value);
 		card4.setEnabled(value);
-		
-		if(value == true)
-		{
+
+		if (value == true) {
 			card1.setAlpha(0.99f);
 			card2.setAlpha(0.99f);
 			card3.setAlpha(0.99f);
 			card4.setAlpha(0.99f);
-		}
-		else 
-		{
+		} else {
 			card1.setAlpha(0.5f);
 			card2.setAlpha(0.5f);
 			card3.setAlpha(0.5f);
 			card4.setAlpha(0.5f);
 		}
-		
+
 		card1.requestLayout();
 		card1.invalidate();
 		card2.requestLayout();
@@ -1072,19 +1081,20 @@ public class MainActivity extends Activity {
 		card4.requestLayout();
 		card4.invalidate();
 	}
-	
+
 	public void imgBtn1Clicked(View view) {
-		
+
 		ImageButton firstImgBtn = (ImageButton) findViewById(R.id.myCardImgBtn);
 		ImageButton secondImgBtn = (ImageButton) findViewById(R.id.opponentCardImgBtn);
-		
+
 		if (firstCardSW == true) {
-			
+
 			firstImgBtn.bringToFront();
 			firstImgBtn.requestLayout();
 			firstImgBtn.invalidate();
 			if (firstHand == true)
-				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card1).substring(3));
+				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card1)
+						.substring(3));
 
 			firstCard = card1;
 			ImageButton imgBtn7 = (ImageButton) findViewById(R.id.myCardImgBtn);
@@ -1098,14 +1108,14 @@ public class MainActivity extends Activity {
 			firstCardSW = false;
 
 			setCardButtonsEnabled(false);
-			
+
 			ImageButton card1 = (ImageButton) findViewById(R.id.card1);
 			card1.setVisibility(View.INVISIBLE);
 			// card1.setImageDrawable(new ColorDrawable(0xFFFFFF));
 
 			ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
 			flagButton.setVisibility(View.INVISIBLE);
-			
+
 			this.card1 = -1;
 		} else {
 
@@ -1124,7 +1134,7 @@ public class MainActivity extends Activity {
 			firstCardSW = true;
 
 			ImageButton card1 = (ImageButton) findViewById(R.id.card1);
-			
+
 			setCardButtonsEnabled(false);
 
 			card1.setVisibility(View.INVISIBLE);
@@ -1135,17 +1145,18 @@ public class MainActivity extends Activity {
 	}
 
 	public void imgBtn2Clicked(View view) {
-		
+
 		ImageButton firstImgBtn = (ImageButton) findViewById(R.id.myCardImgBtn);
 		ImageButton secondImgBtn = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 		if (firstCardSW == true) {
-			
+
 			firstImgBtn.bringToFront();
 			firstImgBtn.requestLayout();
 			firstImgBtn.invalidate();
 			if (firstHand == true)
-				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card2).substring(3));
-			
+				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card2)
+						.substring(3));
+
 			firstCard = card2;
 			ImageButton imgBtn7 = (ImageButton) findViewById(R.id.myCardImgBtn);
 			imgBtn7.setVisibility(View.VISIBLE);
@@ -1158,14 +1169,14 @@ public class MainActivity extends Activity {
 			firstCardSW = false;
 
 			ImageButton card2 = (ImageButton) findViewById(R.id.card2);
-			
+
 			setCardButtonsEnabled(false);
 
 			card2.setVisibility(View.INVISIBLE);
 			// card2.setImageDrawable(new ColorDrawable(0xFFFFFF));
 			ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
 			flagButton.setVisibility(View.INVISIBLE);
-			
+
 			this.card2 = -1;
 		} else {
 
@@ -1184,7 +1195,7 @@ public class MainActivity extends Activity {
 			firstCardSW = true;
 
 			ImageButton card2 = (ImageButton) findViewById(R.id.card2);
-			
+
 			setCardButtonsEnabled(false);
 
 			card2.setVisibility(View.INVISIBLE);
@@ -1197,13 +1208,14 @@ public class MainActivity extends Activity {
 		ImageButton firstImgBtn = (ImageButton) findViewById(R.id.myCardImgBtn);
 		ImageButton secondImgBtn = (ImageButton) findViewById(R.id.opponentCardImgBtn);
 		if (firstCardSW == true) {
-			
+
 			firstImgBtn.bringToFront();
 			firstImgBtn.requestLayout();
 			firstImgBtn.invalidate();
 			if (firstHand == true)
-				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card3).substring(3));
-			
+				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card3)
+						.substring(3));
+
 			firstCard = card3;
 			ImageButton imgBtn7 = (ImageButton) findViewById(R.id.myCardImgBtn);
 			imgBtn7.setVisibility(View.VISIBLE);
@@ -1216,12 +1228,12 @@ public class MainActivity extends Activity {
 			firstCardSW = false;
 
 			ImageButton card3 = (ImageButton) findViewById(R.id.card3);
-			
+
 			setCardButtonsEnabled(false);
 
 			card3.setVisibility(View.INVISIBLE);
 			// card3.setImageDrawable(new ColorDrawable(0xFFFFFF));
-			
+
 			ImageButton flagButton = (ImageButton) findViewById(R.id.flagImgBtn);
 			flagButton.setVisibility(View.INVISIBLE);
 			this.card3 = -1;
@@ -1259,8 +1271,9 @@ public class MainActivity extends Activity {
 			firstImgBtn.requestLayout();
 			firstImgBtn.invalidate();
 			if (firstHand == true)
-				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card4).substring(3));				
-			
+				firstCardOfHand = Integer.valueOf(cardsArrayList.get(card4)
+						.substring(3));
+
 			firstCard = card4;
 			ImageButton imgBtn7 = (ImageButton) findViewById(R.id.myCardImgBtn);
 			imgBtn7.setVisibility(View.VISIBLE);
