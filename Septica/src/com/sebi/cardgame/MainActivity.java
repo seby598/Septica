@@ -79,6 +79,7 @@ public class MainActivity extends Activity {
 	private int secondCard;
 	private int firstCardOfHand;
 	private int usedCardsCounter = 6;
+	private int player;
 
 	private boolean gameStarted = false;
 	private boolean firstCardSW = true;
@@ -434,6 +435,7 @@ public class MainActivity extends Activity {
 									.get(3))));
 					setCardButtonsEnabled(true);
 					gameStarted = true;
+					player = 1;
 				}
 				break;
 			case MESSAGE_READ:
@@ -546,6 +548,7 @@ public class MainActivity extends Activity {
 					
 					gameStarted = true;
 					usedCardsCounter++;
+					player = 2;
 
 					break;
 				} else if (firstCardSW == true) {
@@ -882,22 +885,6 @@ public class MainActivity extends Activity {
 			if(card1 == -1 && card2 == -1 && card3 == -1 && card4 == -1)
 			{
 				Log.i(TAG, "End game!!!");
-				ImageButton deckImgBtn = (ImageButton) findViewById(R.id.deckImgBtn);
-				deckImgBtn.setEnabled(true);
-				gameStarted = false;
-				usedCardsCounter = 6;
-				firstCardSW = true;
-				myHand = false;
-				firstHand = true;
-				takenCards.clear();
-				dealtCards.clear();
-				ImageButton display = (ImageButton) findViewById(R.id.myCardImgBtn);
-				if(updateScore() > 4)
-					display.setImageResource(R.drawable.win);
-				else
-					if(updateScore() == 4)
-						display.setImageResource(R.drawable.draw);
-				shuffleCards();
 				return false;
 			}
 			
@@ -964,11 +951,19 @@ public class MainActivity extends Activity {
 				dealtCards.clear();
 				ImageButton display = (ImageButton) findViewById(R.id.myCardImgBtn);
 				if(updateScore() > 4)
-					display.setImageResource(R.drawable.win);
+					{
+						display.setImageResource(R.drawable.win);
+						shuffleCards();
+					}
 				else
 					if(updateScore() == 4)
+					{
 						display.setImageResource(R.drawable.draw);
-				shuffleCards();
+						if(player == 2)
+							shuffleCards();
+					}
+				
+				
 			}
 		
 		if (numberOfCardsLeft > 0)
