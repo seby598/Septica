@@ -456,6 +456,9 @@ public class BluetoothChatService {
          */
         public void write(byte[] buffer) {
             try {
+            	
+            	String message = new String(buffer);
+            	Log.i(TAG, "Buffer to write: " + message );
                 mmOutStream.write(buffer);
 
                 // Share the sent message back to the UI Activity

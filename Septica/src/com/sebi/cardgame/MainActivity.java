@@ -84,7 +84,8 @@ public class MainActivity extends Activity {
 	private int firstCard;
 	private int secondCard;
 	private int firstCardOfHand;
-	private int usedCardsCounter = 7;
+	private int usedCardsCounter = 6;
+	private int player;
 
 	private boolean gameStarted = false;
 	private boolean firstCardSW = true;
@@ -430,6 +431,7 @@ public class MainActivity extends Activity {
 							.getCardDrawable(cardsArrayList.get(dealtCards
 									.get(3))));
 					gameStarted = true;
+					player = 1;
 				}
 				break;
 			case MESSAGE_READ:
@@ -487,6 +489,7 @@ public class MainActivity extends Activity {
 						opponentCard.setVisibility(View.INVISIBLE);
 
 					} else if (readMessage.substring(0, 9).equals("hideCards")) {
+						decarteazaCarti();
 						ImageButton myCard = (ImageButton) findViewById(R.id.myCardImgBtn);
 						myCard.setVisibility(View.INVISIBLE);
 						ImageButton opponentCard = (ImageButton) findViewById(R.id.opponentCardImgBtn);
@@ -528,6 +531,7 @@ public class MainActivity extends Activity {
 									.get(7))));
 
 					gameStarted = true;
+					player = 2;
 
 					break;
 				} else if (firstCardSW == true) {
@@ -761,18 +765,23 @@ public class MainActivity extends Activity {
 	}
 
 	private void decarteazaCarti() {
+		
+		
 		int numberOfCardsLeft = (32 - usedCardsCounter) / 2;
 		int totalCardsTaken = 0;
 
+		if(player == 2)
+			usedCardsCounter++;
+		
 		if (numberOfCardsLeft > 0)
 			if (card1 == -1) {
 
-				usedCardsCounter++;
+				usedCardsCounter = usedCardsCounter + 2;
 				card1 = dealtCards.get(usedCardsCounter);
 				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card1);
-				Toast.makeText(this,
+				/*Toast.makeText(this,
 						"Iau cartea nr " + usedCardsCounter + " : " + card1,
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_LONG).show();*/
 				ImageButton cardImgBtn1 = (ImageButton) findViewById(R.id.card1);
 				cardImgBtn1.setVisibility(View.VISIBLE);
 				cardImgBtn1.setImageResource(MainActivity
@@ -782,12 +791,12 @@ public class MainActivity extends Activity {
 			}
 		if (numberOfCardsLeft > 0)
 			if (card2 == -1) {
-				usedCardsCounter++;
+				usedCardsCounter = usedCardsCounter + 2;
 				card2 = dealtCards.get(usedCardsCounter);
 				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card2);
-				Toast.makeText(this,
+				/*Toast.makeText(this,
 						"Iau cartea nr " + usedCardsCounter + " : " + card2,
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_LONG).show();*/
 				ImageButton cardImgBtn2 = (ImageButton) findViewById(R.id.card2);
 				cardImgBtn2.setVisibility(View.VISIBLE);
 				cardImgBtn2.setImageResource(MainActivity
@@ -797,12 +806,12 @@ public class MainActivity extends Activity {
 			}
 		if (numberOfCardsLeft > 0)
 			if (card3 == -1) {
-				usedCardsCounter++;
+				usedCardsCounter = usedCardsCounter + 2;
 				card3 = dealtCards.get(usedCardsCounter);
 				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card3);
-				Toast.makeText(this,
+				/*Toast.makeText(this,
 						"Iau cartea nr " + usedCardsCounter + " : " + card3,
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_LONG).show();*/
 				ImageButton cardImgBtn3 = (ImageButton) findViewById(R.id.card3);
 				cardImgBtn3.setVisibility(View.VISIBLE);
 				cardImgBtn3.setImageResource(MainActivity
@@ -812,12 +821,12 @@ public class MainActivity extends Activity {
 			}
 		if (numberOfCardsLeft > 0)
 			if (card4 == -1) {
-				usedCardsCounter++;
+				usedCardsCounter = usedCardsCounter + 2;
 				card4 = dealtCards.get(usedCardsCounter);
 				Log.i(TAG, "Iau cartea nr " + usedCardsCounter + " : " + card4);
-				Toast.makeText(this,
+				/*Toast.makeText(this,
 						"Iau cartea nr " + usedCardsCounter + " : " + card4,
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_LONG).show();*/
 				ImageButton cardImgBtn4 = (ImageButton) findViewById(R.id.card4);
 				cardImgBtn4.setVisibility(View.VISIBLE);
 				cardImgBtn4.setImageResource(MainActivity
@@ -827,12 +836,14 @@ public class MainActivity extends Activity {
 			}
 
 		
-		String message = "takeCards@";
+		/*String message = "takeCards@";
 		
 		message = message + totalCardsTaken + "@" + usedCardsCounter;
-		mChatService.write(message.getBytes());
 		
-		usedCardsCounter = usedCardsCounter + totalCardsTaken;
+		Log.i(TAG, "Mesajul trimis din decarteazaCarti: " + message);
+		mChatService.write(message.getBytes());*/
+		
+		//usedCardsCounter = usedCardsCounter + totalCardsTaken;
 		
 	}
 
