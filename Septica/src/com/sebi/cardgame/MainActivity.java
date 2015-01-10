@@ -277,6 +277,9 @@ public class MainActivity extends Activity {
 			setCardButtonsEnabled(true);
 			gameStarted = true;
 			player = 1;
+			
+			ImageButton display = (ImageButton) findViewById(R.id.display);
+			display.setVisibility(View.INVISIBLE);
 		}
 		
 		mChatService.write(message.getBytes());
@@ -598,6 +601,8 @@ public class MainActivity extends Activity {
 					gameStarted = true;
 					usedCardsCounter++;
 					player = 2;
+					ImageButton display = (ImageButton) findViewById(R.id.display);
+					display.setVisibility(View.INVISIBLE);
 
 					break;
 				} else if (firstCardSW == true) {
@@ -998,21 +1003,50 @@ public class MainActivity extends Activity {
 				firstHand = true;
 				takenCards.clear();
 				dealtCards.clear();
-				ImageButton display = (ImageButton) findViewById(R.id.myCardImgBtn);
+				ImageButton display = (ImageButton) findViewById(R.id.display);
+				display.setVisibility(View.VISIBLE);
 				if(updateScore() > 4)
 					{
 						display.setImageResource(R.drawable.win);
-						shuffleCards();
+						
+						new Timer().schedule(new TimerTask() {
+
+							@Override
+							public void run() {
+								runOnUiThread(new Runnable() {
+									@Override
+									public void run() {
+
+										// stuff that updates ui
+										shuffleCards();
+									}
+								});
+								// this code will be executed after 0.5 seconds
+							}
+						}, 500);
+						
 					}
 				else
 					if(updateScore() == 4)
 					{
 						display.setImageResource(R.drawable.draw);
 						if(player == 2)
-							shuffleCards();
+							new Timer().schedule(new TimerTask() {
+
+								@Override
+								public void run() {
+									runOnUiThread(new Runnable() {
+										@Override
+										public void run() {
+
+											// stuff that updates ui
+											shuffleCards();
+										}
+									});
+									// this code will be executed after 0.5 seconds
+								}
+							}, 500);
 					}
-				
-				
 			}
 		
 		if (numberOfCardsLeft > 0)
