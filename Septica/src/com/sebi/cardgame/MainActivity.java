@@ -541,6 +541,8 @@ public class MainActivity extends Activity {
 							.getCardDrawable(cardsArrayList.get(dealtCards
 									.get(7))));
 
+					setCardButtonsEnabled(false);
+					
 					gameStarted = true;
 					usedCardsCounter++;
 

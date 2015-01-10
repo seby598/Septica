@@ -30,6 +30,7 @@
             android:id="@+id/card1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
             android:onClick="imgBtn1Clicked"
             android:src="@drawable/back" />
 
@@ -37,6 +38,7 @@
             android:id="@+id/card2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
             android:onClick="imgBtn2Clicked"
             android:src="@drawable/back" />
 
@@ -44,6 +46,7 @@
             android:id="@+id/card3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
             android:onClick="imgBtn3Clicked"
             android:src="@drawable/back" />
 
@@ -51,6 +54,7 @@
             android:id="@+id/card4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
             android:onClick="imgBtn4Clicked"
             android:src="@drawable/back" />
 
@@ -69,6 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:background="#FFFFFF"
         android:onClick="deckCLicked"
         android:src="@drawable/back" />
 
