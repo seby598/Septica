@@ -206,7 +206,7 @@ public class MainActivity extends Activity {
 
 	}
 
-	public void shuffleCards() {
+	private void shuffleCards() {
 
 		Random random = new Random();
 		int randomNumber;
@@ -617,13 +617,14 @@ public class MainActivity extends Activity {
 		}
 	};
 
-	private void updateScore() {
+	private int updateScore() {
 		TextView scoreTextView = (TextView) findViewById(R.id.textView1);
 		int x = 0;
 		for (int i = 0; i < takenCards.size(); i++)
 			if (takenCards.get(i) > 9)
 				x++;
 		scoreTextView.setText("My score: " + x);
+		return x;
 	}
 
 	private void compare(int firstCard, int secondCard) {
@@ -869,8 +870,11 @@ public class MainActivity extends Activity {
 	}
 
 	private boolean checkMatchingCards() {
+		
 		if(usedCardsCounter == 30 || usedCardsCounter == 31)
+			if(card1 == -1 && card2 == -1 && card3 == -1 && card4 == -1)
 			{
+				Log.i(TAG, "End game!!!");
 				ImageButton deckImgBtn = (ImageButton) findViewById(R.id.deckImgBtn);
 				deckImgBtn.setEnabled(true);
 				gameStarted = false;
@@ -880,6 +884,13 @@ public class MainActivity extends Activity {
 				firstHand = true;
 				takenCards.clear();
 				dealtCards.clear();
+				ImageButton display = (ImageButton) findViewById(R.id.myCardImgBtn);
+				if(updateScore() > 4)
+					display.setImageResource(R.drawable.win);
+				else
+					if(updateScore() == 4)
+						display.setImageResource(R.drawable.draw);
+				shuffleCards();
 				return false;
 			}
 			
@@ -931,6 +942,28 @@ public class MainActivity extends Activity {
 		int numberOfCardsLeft = (31 - usedCardsCounter) / 2;
 		int totalCardsTaken = 0;
 
+		if(usedCardsCounter == 30 || usedCardsCounter == 31)
+			if(card1 == -1 && card2 == -1 && card3 == -1 && card4 == -1)
+			{
+				Log.i(TAG, "End game!!!");
+				ImageButton deckImgBtn = (ImageButton) findViewById(R.id.deckImgBtn);
+				deckImgBtn.setEnabled(true);
+				gameStarted = false;
+				usedCardsCounter = 6;
+				firstCardSW = true;
+				myHand = false;
+				firstHand = true;
+				takenCards.clear();
+				dealtCards.clear();
+				ImageButton display = (ImageButton) findViewById(R.id.myCardImgBtn);
+				if(updateScore() > 4)
+					display.setImageResource(R.drawable.win);
+				else
+					if(updateScore() == 4)
+						display.setImageResource(R.drawable.draw);
+				shuffleCards();
+			}
+		
 		if (numberOfCardsLeft > 0)
 			if (card1 == -1) {
 
