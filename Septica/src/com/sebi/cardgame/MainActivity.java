@@ -257,6 +257,11 @@ public class MainActivity extends Activity {
 			card3 = dealtCards.get(2);
 			card4 = dealtCards.get(3);
 
+			imgBtn1.setVisibility(View.VISIBLE);
+			imgBtn2.setVisibility(View.VISIBLE);
+			imgBtn3.setVisibility(View.VISIBLE);
+			imgBtn4.setVisibility(View.VISIBLE);
+			
 			imgBtn1.setImageResource(MainActivity
 					.getCardDrawable(cardsArrayList.get(dealtCards
 							.get(0))));
@@ -569,6 +574,11 @@ public class MainActivity extends Activity {
 					card2 = dealtCards.get(5);
 					card3 = dealtCards.get(6);
 					card4 = dealtCards.get(7);
+					
+					imageBtn1.setVisibility(View.VISIBLE);
+					imageBtn2.setVisibility(View.VISIBLE);
+					imageBtn3.setVisibility(View.VISIBLE);
+					imageBtn4.setVisibility(View.VISIBLE);
 
 					imageBtn1.setImageResource(MainActivity
 							.getCardDrawable(cardsArrayList.get(dealtCards
