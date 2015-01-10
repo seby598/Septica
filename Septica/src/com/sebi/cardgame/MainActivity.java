@@ -212,7 +212,7 @@ public class MainActivity extends Activity {
 	}
 
 	private void shuffleCards() {
-
+		Log.i(TAG, "Shuffle cards");
 		Random random = new Random();
 		int randomNumber;
 
@@ -239,6 +239,41 @@ public class MainActivity extends Activity {
 			message = message + dealtCards.get(i).toString() + "_";
 		}
 
+		if (gameStarted == false) {
+			ImageButton deckImgBtn = (ImageButton) findViewById(R.id.deckImgBtn);
+			deckImgBtn.setEnabled(false);
+			//Log.i(TAG, "MESSAGE_STATE_CHANGE: " + msg.arg1);
+			/*byte[] readBuf = (byte[]) msg.obj;
+			// construct a string from the valid bytes in the buffer
+			String readMessage = new String(readBuf, 0, msg.arg1);
+			Log.i(TAG, "After game end: " + readMessage);*/
+			ImageButton imgBtn1 = (ImageButton) findViewById(R.id.card1);
+			ImageButton imgBtn2 = (ImageButton) findViewById(R.id.card2);
+			ImageButton imgBtn3 = (ImageButton) findViewById(R.id.card3);
+			ImageButton imgBtn4 = (ImageButton) findViewById(R.id.card4);
+
+			card1 = dealtCards.get(0);
+			card2 = dealtCards.get(1);
+			card3 = dealtCards.get(2);
+			card4 = dealtCards.get(3);
+
+			imgBtn1.setImageResource(MainActivity
+					.getCardDrawable(cardsArrayList.get(dealtCards
+							.get(0))));
+			imgBtn2.setImageResource(MainActivity
+					.getCardDrawable(cardsArrayList.get(dealtCards
+							.get(1))));
+			imgBtn3.setImageResource(MainActivity
+					.getCardDrawable(cardsArrayList.get(dealtCards
+							.get(2))));
+			imgBtn4.setImageResource(MainActivity
+					.getCardDrawable(cardsArrayList.get(dealtCards
+							.get(3))));
+			setCardButtonsEnabled(true);
+			gameStarted = true;
+			player = 1;
+		}
+		
 		mChatService.write(message.getBytes());
 	}
 
@@ -407,10 +442,14 @@ public class MainActivity extends Activity {
 
 			case MESSAGE_WRITE:
 				updateScore();
-				if (gameStarted == false) {
+				/*if (gameStarted == false) {
 					ImageButton deckImgBtn = (ImageButton) findViewById(R.id.deckImgBtn);
 					deckImgBtn.setEnabled(false);
 					Log.i(TAG, "MESSAGE_STATE_CHANGE: " + msg.arg1);
+					byte[] readBuf = (byte[]) msg.obj;
+					// construct a string from the valid bytes in the buffer
+					String readMessage = new String(readBuf, 0, msg.arg1);
+					Log.i(TAG, "After game end: " + readMessage);
 					ImageButton imgBtn1 = (ImageButton) findViewById(R.id.card1);
 					ImageButton imgBtn2 = (ImageButton) findViewById(R.id.card2);
 					ImageButton imgBtn3 = (ImageButton) findViewById(R.id.card3);
@@ -436,7 +475,7 @@ public class MainActivity extends Activity {
 					setCardButtonsEnabled(true);
 					gameStarted = true;
 					player = 1;
-				}
+				}*/
 				break;
 			case MESSAGE_READ:
 				updateScore();
@@ -884,7 +923,7 @@ public class MainActivity extends Activity {
 		if(usedCardsCounter == 30 || usedCardsCounter == 31)
 			if(card1 == -1 && card2 == -1 && card3 == -1 && card4 == -1)
 			{
-				Log.i(TAG, "End game!!!");
+				Log.i(TAG, "End game form checkMatchingCards()!!!");
 				return false;
 			}
 			
@@ -939,7 +978,7 @@ public class MainActivity extends Activity {
 		if(usedCardsCounter == 30 || usedCardsCounter == 31)
 			if(card1 == -1 && card2 == -1 && card3 == -1 && card4 == -1)
 			{
-				Log.i(TAG, "End game!!!");
+				Log.i(TAG, "End game from decarteazaCarti!!!");
 				ImageButton deckImgBtn = (ImageButton) findViewById(R.id.deckImgBtn);
 				deckImgBtn.setEnabled(true);
 				gameStarted = false;
