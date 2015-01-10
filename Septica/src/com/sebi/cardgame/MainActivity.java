@@ -178,12 +178,12 @@ public class MainActivity extends Activity {
 			serverIntent = new Intent(this, DeviceListActivity.class);
 			startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE_SECURE);
 			return true;
-		case R.id.insecure_connect_scan:
+		/*case R.id.insecure_connect_scan:
 			// Launch the DeviceListActivity to see devices and do scan
 			serverIntent = new Intent(this, DeviceListActivity.class);
 			startActivityForResult(serverIntent,
 					REQUEST_CONNECT_DEVICE_INSECURE);
-			return true;
+			return true;*/
 		case R.id.discoverable:
 			// Ensure this device is discoverable by others
 			ensureDiscoverable();
@@ -1001,7 +1001,7 @@ public class MainActivity extends Activity {
 				firstCardSW = true;
 				myHand = false;
 				firstHand = true;
-				takenCards.clear();
+				
 				dealtCards.clear();
 				ImageButton display = (ImageButton) findViewById(R.id.display);
 				display.setVisibility(View.VISIBLE);
@@ -1047,6 +1047,7 @@ public class MainActivity extends Activity {
 								}
 							}, 500);
 					}
+				takenCards.clear();
 			}
 		
 		if (numberOfCardsLeft > 0)

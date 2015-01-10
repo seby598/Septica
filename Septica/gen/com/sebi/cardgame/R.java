@@ -68,10 +68,9 @@ public final class R {
         public static final int card3=0x7f080006;
         public static final int card4=0x7f080007;
         public static final int deckImgBtn=0x7f080002;
-        public static final int discoverable=0x7f080013;
+        public static final int discoverable=0x7f080012;
         public static final int display=0x7f08000a;
         public static final int flagImgBtn=0x7f080008;
-        public static final int insecure_connect_scan=0x7f080012;
         public static final int linearLayout1=0x7f080003;
         public static final int myCardImgBtn=0x7f080000;
         public static final int new_devices=0x7f08000e;
