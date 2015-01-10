@@ -34,7 +34,7 @@
             android:layout_marginRight="10dp"
             android:background="#FFFFFF"
             android:onClick="imgBtn1Clicked"
-            android:src="@drawable/back" />
+            android:src="@drawable/back"/>
 
         <ImageButton
             android:id="@+id/card2"

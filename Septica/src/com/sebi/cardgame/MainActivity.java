@@ -149,6 +149,8 @@ public class MainActivity extends Activity {
 			startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
 			// Otherwise, setup the chat session
 		}
+		
+		setCardButtonsEnabled(false);
 	}
 
 	@Override
@@ -426,6 +428,7 @@ public class MainActivity extends Activity {
 					imgBtn4.setImageResource(MainActivity
 							.getCardDrawable(cardsArrayList.get(dealtCards
 									.get(3))));
+					setCardButtonsEnabled(true);
 					gameStarted = true;
 				}
 				break;
